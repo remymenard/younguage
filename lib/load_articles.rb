@@ -2,6 +2,7 @@ require 'csv'
 require 'selenium-webdriver'
 require 'json'
 require 'open-uri'
+require 'redcarpet'
 
 puts "Which theme do you want to scrape ?"
 theme = gets.chomp
@@ -36,7 +37,8 @@ CSV.open(filepath, 'wb', csv_options) do |csv|
   end
 end
 
-
-# url = "https://unmediumed.com/#{articles_url[0]}"
-# `mediumexporter https://medium.com/@xdamman/my-10-day-meditation-retreat-in-silence-71abda54940e > #{Rails.root}/lib/articles/medium_post2.md`
-# p user_serialized.gsub!(/\n/, '<br/>')
+renderer = Redcarpet::Render::HTML.new
+markdown = Redcarpet::Markdown.new(renderer)
+file     = File.open("#{Rails.root}/lib/articles/1.md").read
+result   = markdown.render(file).delete("\n")
+p result
