@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :flashcard
+  has_many :flashcards
 
   validates :username, presence: true, allow_blank: false, uniqueness: true
   # Include default devise modules. Others available are:
