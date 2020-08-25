@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: younguage_production
-  username: younguage
-  password: <%= ENV['YOUNGUAGE_DATABASE_PASSWORD'] %>
+  url: <%= ENV['POSTGRESQL_ADDON_URI'] %>
