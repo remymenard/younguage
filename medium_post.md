@@ -1,0 +1,32 @@
+
+# Fantasy sports it’s where elves play soccer or what?
+
+Tracing it roots back to 1980, fantasy sports is the arena in which die-hard sports fans prove themselves as the die-hardest.
+
+Whether it’s baseball, football, or any other sport hung on statistics, fantasy participants draft an imaginary team within an imaginary league of real-world athletes. They use their sports know-how to act as manager for a season, starting players and making trades. Competitors earn points based on how their picks perform in actual games, and whoever has the most points at the end of the season wins.
+
+![](https://cdn-images-1.medium.com/max/2000/1*2CliFe8iZ0RH54wiEC4vsA.jpeg)
+
+Who are the people playing this game-about-a-game? What does it take to excel, and what’s in it for them?
+
+Simply put, the winner often gets money and bragging rights for having won — there’s usually a league betting pool involved. But beyond the base motivations of profit and conquering, every fantasy player gets rooting interests for an entire season of play.
+
+Skilled fantasy players are concerned with far more than than the reductive data point of which two teams are opposing each other. At any moment, a particular hitter might score a home run in baseball, or a favorite quarterback might make an important touchdown that translates into game-changing fantasy points.
+
+For the invested fantasy player, it’s hard to tell if watching the live games makes fantasy more enjoyable, or if playing fantasy makes the games more enjoyable.
+
+Matt Petersen is the type of player who certainly gets pleasure from winning his league, but his appreciation for fantasy stems from his love of statistics in general. “I started playing fantasy football in 2004 because I was a statistics-obsessed high schooler who loved football,” he says. “I love dissecting tiny statistical differences between players, and it sweetens the world of football for me by adding another dimension to my favorite sports organization, the NFL”
+
+![](https://cdn-images-1.medium.com/max/2000/1*zoWLe_VdTKQdanbIf4coQA.jpeg)
+
+“The fantasy soccer players I’ve met are some of the most passionate sports fans out there,” says Alexander Hleb, the decorated professional soccer player for Arsenal who won the Union of European Football Associations for FC Barcelona. Nowadays he’s an advisor for [fantasy sports platform MyDFS](http://mydfs.net/?utm_source=medium&utm_medium=post&utm_term=pleasure_and_sorrow&utm_campaign=preico). “Sometimes fantasy players know more about my career than I do.”
+
+Beyond generally having a mind for numbers, the most successful fantasy players are those who pay attention to their real-world lineups. Who’s injured? Who’s benched? All these possibilities and more need to be anticipated if you’re going to win your league.
+
+“In fantasy baseball, you may need to be changing your lineup daily,” says sports aficionado Garrett Brustein. He personally prefers playing fantasy football, but this still requires some regular attention to be successful. “You need to be aware of injuries and get to the waiver wire. Most people who play fantasy will pay attention to fantasy articles or podcasts, often making roster decisions based on what those say.”
+
+Different competitors put different amounts of effort into winning their leagues.
+
+One fantasy player we spoke to was largely disinterested in sports, yet still participates in a fantasy football league with his friends. “I started about 10 years ago in college, when some friends had an odd number of teams in their league and asked me to even it out,” says Andrew Reese. “I viewed it as a new opportunity to talk smack to them, and I actually won that season on auto draft. I’ve been the go-to filler team ever since.”
+
+Whatever their motivations are for playing fantasy, those who succeed at it must strike a balance between being right and being lucky. It’s not enough to know which players are the most statistically favorable, and then go out and retain them. A fantasy player’s lineup must also perform well in the real world, and that depends on much more than statistics.
