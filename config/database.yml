@@ -25,6 +25,10 @@ development:
   <<: *default
   database: younguage_development
 
+production:
+  <<: *default
+  url: <%= ENV['POSTGRESQL_ADDON_URI'] %>
+
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
@@ -78,6 +82,3 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  url: <%= ENV['POSTGRESQL_ADDON_URI'] %>
