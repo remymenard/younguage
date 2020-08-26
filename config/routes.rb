@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   resources :articles, only: [:index, :show]
   resources :words, only: [:create, :index]
   resources :flashcards, only: :show
+  resources :lists, only: :show
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :articles, only: [:index, :show]
   resources :words, only: [:create, :index]
-  resources :flashcards, only: :show
+  resources :flashcards, only: [:show, :index]
 end

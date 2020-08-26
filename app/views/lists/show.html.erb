@@ -1,0 +1,36 @@
+<h1>List of flashcards</h1>
+
+<div id='flashcards-list' data-list-size=<%= @list.flashcards.length.to_s %>>
+  <% @list.flashcards.each_with_index do |flashcard, index| %>
+    <% flashcard = Flashcard.find(flashcard['id']) %>
+
+    <div id=<%= 'flashcard-' + (index + 1).to_s %> >
+      <div id='fc-recto' class='card m-3 p-3' style='display: none;'>
+        <h3><%= flashcard.word.word %></h3>
+        <%= simple_form_for flashcard do |f| %>
+          <%= f.input :response, label: false %>
+          <%= f.button :submit, 'SUBMIT', id: 'fc-submit-btn', class: 'btn-primary' %>
+        <% end %>
+      </div>
+
+      <div id='fc-verso' class='card m-3 p-3' style='display: none;'>
+        <h3><%= flashcard.word.word %></h3>
+        <%= simple_form_for flashcard do |f| %>
+          <%= f.input :response, label: false %>
+          <h3><%= flashcard.word.translation %></h3>
+          <%= f.button :submit, '✓', class: "fc-btn btn-success" %>
+          <%= f.button :submit, 'X', class: "fc-btn btn-danger" %>
+        <% end %>
+      </div>
+    </div>
+
+  <% end %>
+</div>
+
+<div id='congrats' class='card m-3 p-3' style='display: none;'>
+  <h3>Results</h3>
+  <p>Congratulations</p>
+</div>
+
+<%= javascript_pack_tag 'flashcard' %>
+

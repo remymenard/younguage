@@ -1,0 +1,21 @@
+<h1>Flashcards</h1>
+
+<div id='fc-recto' class='card m-3 p-3'>
+  <h3><%= @flashcard.word.word %></h3>
+  <%= simple_form_for @flashcard do |f| %>
+    <%= f.input :response, label: false %>
+    <%= f.button :submit, 'SUBMIT', id: 'fc-submit-btn', class: 'btn-primary' %>
+  <% end %>
+</div>
+
+<div id='fc-verso' class='card m-3 p-3'>
+  <h3><%= @flashcard.word.word %></h3>
+  <%= simple_form_for @flashcard do |f| %>
+    <%= f.input :response, label: false %>
+    <h3><%= @flashcard.word.translation %></h3>
+    <%= f.button :submit, '✓', class: "btn-success" %>
+    <%= f.button :submit, 'X', class: "btn-danger" %>
+  <% end %>
+</div>
+
+<%= raise %>
