@@ -23,7 +23,6 @@ require("jquery")
 
 // External imports
 import "bootstrap";
-import { translateWords } from '../components/translateWords.js'
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -31,8 +30,4 @@ import { translateWords } from '../components/translateWords.js'
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  if (document.getElementById('content') != null){
-
-    translateWords();
-  }
 });
