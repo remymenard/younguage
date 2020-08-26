@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :articles, only: [:index, :show]
   resources :words, only: [:create, :index]
   resources :flashcards, only: :show
+
+  patch '/flashcards/:id/mastered', to: 'flashcards#mastered', as: 'flashcard_mastered_update'
 end

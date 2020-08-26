@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2020_08_26_121436) do
+ActiveRecord::Schema.define(version: 2020_08_26_145422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_08_26_121436) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "response"
+    t.boolean "mastered", default: false
     t.index ["user_id"], name: "index_flashcards_on_user_id"
     t.index ["word_id"], name: "index_flashcards_on_word_id"
   end
@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(version: 2020_08_26_121436) do
   create_table "words", force: :cascade do |t|
     t.string "word"
     t.string "translation"
-    t.boolean "mastered", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
