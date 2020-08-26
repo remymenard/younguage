@@ -33,7 +33,6 @@ def scrap_articles_from_medium(topic)
   all_a = browser.find_elements(:xpath => "//a").select do |element|
     element.text == 'Read more…'
   end
-
   all_a
 end
 
@@ -44,6 +43,12 @@ def get_author_from_article(url)
   html_doc = Nokogiri::HTML(html_file)
 
   html_doc.search('h1').first.text
+
+  if html_doc.search('h1').first.text.nil?
+    return 'unknown'
+  else
+    return html_doc.search('h1').first.text
+  end
 end
 
 def convert_articles_to_markdown(articles)
@@ -80,6 +85,7 @@ def generate_articles(topic)
   articles = scrap_articles_from_medium(topic)
   markdowns = convert_articles_to_markdown(articles)
   save_articles_to_db(markdowns, topic)
+  FileUtils.rm_f Dir.glob("#{Rails.root}/lib/articles/*")
 end
 
 generate_articles(technology)
