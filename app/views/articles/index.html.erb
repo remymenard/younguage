@@ -1,0 +1,16 @@
+<div class="container mt-3">
+  <div class=" text-center col-12 mt-3 pt-3" style = "color: #311D3F"><h1 >Younguage</h1></div>
+  <% @articles.each do |article| %>
+
+    <div class="card-body articles-index m-3 p-3" " style = "color: #311D3F">
+      <h3 class="card-title"><%= article.title %></h3>
+      <div class= "author-topic">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Medium_logo_Monogram.svg/1200px-Medium_logo_Monogram.svg.png" class="avatar-medium" />
+        <div class="author"><%= article.author %></div>
+        <div class="topic"><%= article.topic.name %></div>
+      </div>
+      <%= link_to '', article_path(article), class: "card-link" %>
+    </div>
+
+  <% end %>
+</div>
