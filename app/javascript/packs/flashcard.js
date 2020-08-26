@@ -1,5 +1,11 @@
 document.addEventListener('turbolinks:load', () => displayFlashcards());
 
+const masteredFlashcard = (event, i) => {
+  if (event.srcElement.id == 'mastered') {
+    document.querySelector(`#flashcard-${i} #flashcard_mastered`).value = 'true';
+  }
+}
+
 const flashcardSubmitButton = (i, list) => {
   if(i <= list) {
     document.querySelector(`#flashcard-${i} #fc-recto`).style.display = 'block';
@@ -14,7 +20,7 @@ const flashcardSubmitButton = (i, list) => {
 
     document.querySelectorAll(`#flashcard-${i} .fc-btn`).forEach((btn) => {
       btn.addEventListener('click', (event) => {
-        event.preventDefault();
+        masteredFlashcard(event, i);
         document.querySelector(`#flashcard-${i} #fc-verso`).style.display = 'none';
         i += 1;
         flashcardSubmitButton(i, list);
