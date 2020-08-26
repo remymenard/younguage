@@ -3,5 +3,6 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @article = Article.fin(params[:id])
   end
 end
