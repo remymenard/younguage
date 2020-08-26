@@ -22,7 +22,7 @@ selfcare = Topic.create!(name: "selfcare")
 startups = Topic.create!(name: "startups")
 
 def scrap_articles_from_medium(topic)
-  browser = Selenium::WebDriver.for :chrome
+  browser = Selenium::WebDriver.for :safari
   browser.get "https://medium.com/search?q=#{topic.name}"
   wait = Selenium::WebDriver::Wait.new(:timeout => 4)
 
@@ -59,7 +59,7 @@ def convert_articles_to_markdown(articles)
     `mediumexporter #{firstPart} > #{Rails.root}/lib/articles/#{index}.md`
     lines = File.open("#{Rails.root}/lib/articles/#{index}.md").to_a
     title = lines[1][2..-2]
-    if lines.size < 10 && title != nil
+    if lines.size < 10 && title != nil && url != nil
       `rm #{Rails.root}/lib/articles/#{index}.md`
     else
       markdowns << {title: title, file_location: "#{Rails.root}/lib/articles/#{index}.md", url: url, author: get_author_from_article(url)}
