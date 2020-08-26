@@ -1,3 +1,26 @@
-<h1 class='title-text'><strong><%= @article.title %></strong></h1>
-<br>
-<p><%= @article.content %></p>
+<div class="banner-article">
+  <script src=""></script>
+  <h1><%= @article.title %></h1>
+  <span class="theme"><%= @article.topic.name %></span>
+</div>
+<div id="content" class="container">
+  <%= sanitize @article.content %>
+  <div id="translation">
+    <div class="container">
+      <div class="row align-items-center">
+        <div id="cross" class="col-3">
+          <i class="fas fa-times"></i>
+        </div>
+        <div id="words" class="col-6">
+          <div class="row" id="untranslated">Test</div>
+          <div class="row" id="translated">Test</div>
+        </div>
+        <div class="col-3">
+          <div id="cloud">
+            <i class="fas fa-cloud-upload-alt"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
