@@ -2,12 +2,17 @@ const googleTranslate = require('free-google-translation');
 
 const translation = (word) => {
 
+untranslated = document.querySelector("#untranslated");
+translated = document.getElementById("translated");
+
 let sourceLanguage = 'en';
 let targetLanguage = 'fr';
 
 googleTranslate(word, sourceLanguage, targetLanguage)
 .then(function(response) {
     console.log(response);
+    untranslated.innerText = word
+    translated.innerText = response
 });
 }
 
@@ -40,4 +45,4 @@ const translateWords = () => {
 }
 
 
-export {translateWords}
+translateWords();

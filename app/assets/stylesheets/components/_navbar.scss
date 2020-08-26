@@ -8,6 +8,14 @@
   background-color: #393838;
   opacity: 1;
   width:90%;
+
+  .fas {
+    color: white !important;
+  }
+
+  .far {
+    color: white !important;
+  }
 }
 
 .navbar-link {
@@ -25,14 +33,6 @@
   .navbar-link {
     background-color: #522546;
   }
-}
-
-.fas {
-  color: white !important;
-}
-
-.far {
-  color: white !important;
 }
 
 .navbar {
