@@ -7,7 +7,7 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-
+require("jquery")
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -16,7 +16,6 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-
 // ----------------------------------------------------
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
@@ -24,12 +23,16 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import { translateWords } from '../components/translateWords.js'
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
-
+// import { detectWords } from '../components/translateWords.js'
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  // flashcardSubmitButton();
+  if (document.getElementById('content') != null){
+
+    translateWords();
+  }
 });

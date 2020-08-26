@@ -9,4 +9,7 @@ class FlashcardsController < ApplicationController
       @flashcard.save
     end
   end
+
+  def index
+  end
 end
