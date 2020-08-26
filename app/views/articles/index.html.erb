@@ -9,6 +9,7 @@
         <div class="author"><%= article.author %></div>
         <div class="topic"><%= article.topic.name %></div>
       </div>
+      <%= link_to '', article_path(article), class: "card-link" %>
     </div>
 
   <% end %>
