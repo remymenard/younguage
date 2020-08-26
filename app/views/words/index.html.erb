@@ -1,0 +1,7 @@
+<h1>Mon lexique</h1>
+
+<ul>
+  <% @words.each do |word| %>
+    <li><%= word.word %> : <%= word.translation %></li>
+  <% end %>
+</ul>
