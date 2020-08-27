@@ -59,10 +59,18 @@ def convert_articles_to_markdown(articles)
     `mediumexporter #{firstPart} > #{Rails.root}/lib/articles/#{index}.md`
     lines = File.open("#{Rails.root}/lib/articles/#{index}.md").to_a
     title = lines[1][2..-2]
+    `touch #{Rails.root}/lib/articles/#{index}.1.md`
+    File.open("#{Rails.root}/lib/articles/#{index}.1.md", 'w') do |out_file|
+      File.foreach("#{Rails.root}/lib/articles/#{index}.md").with_index do |line,line_number|
+         out_file.puts line if line_number > 1
+      end
+    end
+
     if lines.size < 10 && title != nil && url != nil
       `rm #{Rails.root}/lib/articles/#{index}.md`
+      `rm #{Rails.root}/lib/articles/#{index}.1.md`
     else
-      markdowns << {title: title, file_location: "#{Rails.root}/lib/articles/#{index}.md", url: url, author: get_author_from_article(url)}
+      markdowns << {title: title, file_location: "#{Rails.root}/lib/articles/#{index}.1.md", url: url, author: get_author_from_article(url)}
     end
   end
   markdowns

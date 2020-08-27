@@ -16,7 +16,15 @@ googleTranslate(word, sourceLanguage, targetLanguage)
 });
 }
 
+const addSpaces = () => {
+  let all_p = document.querySelectorAll('p, h1, h3');
+  all_p.forEach(paragraph => {
+    paragraph.innerText = ` ${paragraph.innerText}`
+  });
+}
+
 const translateWords = () => {
+  addSpaces();
   try {
     let s;
   $('#content').click(function(e) {
