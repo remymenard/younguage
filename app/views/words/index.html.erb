@@ -1,17 +1,34 @@
-<h1>Mon lexique</h1>
+<div class="container pt-3 pl-3">
+  <div class="lexique" style = "background-color: #88304E">
+    <div class= "row">
+      <h1 class= "pl-3  m-3">Lexique</h1>
+      <h4 class= "p-3 m-3"> <%= @words.count %> mots</h4>
 
-<%= form_tag words_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a word"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+    </div>
+    <div class="search search-container">
+      <%= simple_form_for words_path, method: :get,
+        wrapper: :inline_form,
+        html: { class: "form-inline" },
+        wrapper_mappings: {
+        boolean: :inline_boolean
+        } do |f| %>
+        <%= text_field_tag :query,
+          params[:query],
+          placeholder: "Recherche"
+        %>
+      <% end %>
 
+    </div>
 
-<ul>
-  <% @words.each do |word| %>
-    <li><%= word.word %> : <%= word.translation %></li>
-  <% end %>
-</ul>
+    <div class= "words" style= "background-color: white">
+        <% @words.each do |word| %>
+          <div class="row all-words">
+            <p class= "word"><%= word.word %></p>  <p class= "translation"><%= word.translation %></p>
+          </div>
+        <% end %>
+    </div>
+
+  </div>
+
+</div>
+
