@@ -22,7 +22,7 @@ selfcare = Topic.create!(name: "selfcare")
 startups = Topic.create!(name: "startups")
 
 def scrap_articles_from_medium(topic)
-  browser = Selenium::WebDriver.for :safari
+  browser = Selenium::WebDriver.for :chrome
   browser.get "https://medium.com/search?q=#{topic.name}"
   wait = Selenium::WebDriver::Wait.new(:timeout => 4)
 
