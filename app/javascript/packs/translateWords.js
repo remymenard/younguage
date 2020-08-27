@@ -1,8 +1,11 @@
 const googleTranslate = require('free-google-translation');
 
+let untranslated;
+let translated;
+
 const translation = (word) => {
 
-untranslated = document.querySelector("#untranslated");
+untranslated = document.getElementById("untranslated");
 translated = document.getElementById("translated");
 
 let sourceLanguage = 'en';
@@ -10,16 +13,17 @@ let targetLanguage = 'fr';
 
 googleTranslate(word, sourceLanguage, targetLanguage)
 .then(function(response) {
-    console.log(response);
+    // console.log(response);
     untranslated.innerText = word
     translated.innerText = response
 });
 }
 
 const addSpaces = () => {
-  let all_p = document.querySelectorAll('p, h1, h3');
+  let all_p = document.querySelectorAll("h2, h1, p");
   all_p.forEach(paragraph => {
-    paragraph.innerText = ` ${paragraph.innerText}`
+    // console.log(paragraph);
+    paragraph.innerText = " " + paragraph.innerText + " "
   });
 }
 
@@ -43,7 +47,7 @@ const translateWords = () => {
 
     var str = range.toString().trim();
     // alert(str);
-    str = str.replace(/\W/g, '')
+    str = str.replace(/\.|!|\?|,|\(|\)|:/g, '')
     translation(str)
 });
   } catch (error) {
@@ -52,5 +56,28 @@ const translateWords = () => {
 
 }
 
+const activateButton = () => {
+  $("#cloud").click(function(e) {
+    e.preventDefault();
+    console.log(untranslated.innerText)
+    console.log(translated.innerText)
+    $.ajax({
+        type: "POST",
+        url: "/words",
+        headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
+        data: {
+          word: untranslated.innerText,
+          translation: translated.innerText
+        },
+        success: function(result) {
+            alert('ok');
+        },
+        error: function(result) {
+            alert('error');
+        }
+    });
+});
+}
 
-translateWords();
+document.addEventListener('turbolinks:load', translateWords);
+document.addEventListener('turbolinks:load', activateButton);
