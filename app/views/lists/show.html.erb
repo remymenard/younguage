@@ -1,9 +1,9 @@
 <h1>List of flashcards</h1>
 
+
+
 <div id='flashcards-list' data-list-size=<%= @list.flashcards.length.to_s %>>
   <% @list.flashcards.each_with_index do |flashcard, index| %>
-    <% flashcard = Flashcard.find(flashcard['id']) %>
-
     <div data-flashcard-id=<%= flashcard.id %> id=<%= 'flashcard-' + (index + 1).to_s %> >
       <div id='fc-recto' class='card m-3 p-3' style='display: none;'>
         <h3><%= flashcard.word.word %></h3>
@@ -18,15 +18,15 @@
         <%= simple_form_for flashcard, url: flashcard_mastered_update_path(flashcard) do |f| %>
           <%= f.input :response, label: false %>
           <h3><%= flashcard.word.translation %></h3>
-          <%= f.input :mastered, :as => :hidden, :input_html => { :value => "false" } %>
+          <%= f.input :mastered, as: :hidden, input_html: { value: "false" } %>
           <%= f.button :submit, '✓', id: 'mastered', class: "fc-btn btn-success" %>
           <%= f.button :submit, 'X', class: "fc-btn btn-danger" %>
         <% end %>
       </div>
     </div>
-
   <% end %>
 </div>
+
 
 <div id='congrats' class='card m-3 p-3' style='display: none;'>
   <h3>100%</h3>
