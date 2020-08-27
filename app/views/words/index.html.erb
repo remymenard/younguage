@@ -1,5 +1,15 @@
 <h1>Mon lexique</h1>
 
+<%= form_tag words_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a word"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+
 <ul>
   <% @words.each do |word| %>
     <li><%= word.word %> : <%= word.translation %></li>
