@@ -1,40 +1,45 @@
-document.addEventListener('turbolinks:load', () => displayFlashcards());
+document.addEventListener('turbolinks:load', () => {displayFlashcards(), submitButtonSwitchFlashcard(), masteredSubmit()});
 
-const masteredFlashcard = (event, i) => {
-  if (event.srcElement.id == 'mastered') {
-    document.querySelector(`#flashcard-${i} #flashcard_mastered`).value = 'true';
-  }
+const submitButtonSwitchFlashcard = () => {
+  document.querySelectorAll('.fc-submit-btn').forEach((submit_btn) => {
+    submit_btn.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      document.querySelectorAll('.flashcard_response').forEach((el) => {
+        el.addEventListener('click', (event) => {
+          console.log(event);
+        });
+      });
+
+      const response = event.srcElement.parentElement.children[2].innerText;
+      // console.log(response);
+      event.srcElement.parentElement.parentElement.parentElement.children[1].children[1][2].innerText = response;
+      event.srcElement.parentElement.parentElement.parentElement.children[0].style.display = 'none';
+      event.srcElement.parentElement.parentElement.parentElement.children[1].style.display = 'block';
+    });
+  });
 }
 
-const flashcardSubmitButton = (i, list) => {
-  if(i <= list) {
-    document.querySelector(`#flashcard-${i} #fc-recto`).style.display = 'block';
-    const submitButton = document.querySelector(`#flashcard-${i} #fc-submit-btn`);
-    submitButton.addEventListener('click', (event) => {
-      event.preventDefault();
-      const flashcardResponse = document.querySelector(`#flashcard-${i} #fc-recto #flashcard_response`).value;
-      document.querySelector(`#flashcard-${i} #fc-verso #flashcard_response`).value = flashcardResponse;
-      document.querySelector(`#flashcard-${i} #fc-recto`).style.display = 'none';
-      document.querySelector(`#flashcard-${i} #fc-verso`).style.display = 'block';
+const masteredSubmit = () => {
+  document.querySelectorAll('.mastered-submit').forEach((btn) => {
+    btn.addEventListener('click', (event) => {
+      console.log(event);
+      event.srcElement.parentElement.children[4].children[0].value = 'true';
     });
+  });
+}
 
-    document.querySelectorAll(`#flashcard-${i} .fc-btn`).forEach((btn) => {
-      btn.addEventListener('click', (event) => {
-        masteredFlashcard(event, i);
-        document.querySelector(`#flashcard-${i} #fc-verso`).style.display = 'none';
-        i += 1;
-        flashcardSubmitButton(i, list);
-      });
-    });
-  } else {
-    document.getElementById('congrats').style.display = 'block';
-  }
+const congratulationsDisplay = () => {
+  document.getElementById('congrats').style.display = 'block';
 }
 
 const displayFlashcards = () => {
-  let i = 1;
-  const list = document.getElementById('flashcards-list').dataset.listSize;
-  flashcardSubmitButton(i, list);
+  const unmasteredFlashcards = document.querySelectorAll('.flashcard-card[data-mastered="false"]');
+  if (unmasteredFlashcards.length == 0) {
+    congratulationsDisplay();
+  } else {
+    unmasteredFlashcards[0].querySelector('.fc-recto').style.display = 'block';
+  }
 }
 
 export { displayFlashcards };
