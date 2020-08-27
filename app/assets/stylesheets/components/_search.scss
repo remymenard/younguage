@@ -1,0 +1,40 @@
+.search {
+  padding-left: 20px;
+  padding-bottom: 20px;
+  input {
+    border-radius: 30px;
+    margin: 5px;
+    padding: 5px;
+    padding-left: 20px;
+    width: 90%;
+  }
+}
+
+.lexique {
+  border-radius: 30px;
+  height: 520px;
+  h1 {
+    color: white;
+  }
+  h4 {
+    color: white;
+  }
+}
+
+.words {
+  .all-words {
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  border-radius: 30px;
+  margin: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  height: 320px;
+  padding-top: 10px;
+  color: #311D3F;
+  overflow: scroll;
+}
