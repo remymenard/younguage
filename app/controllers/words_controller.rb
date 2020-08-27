@@ -4,5 +4,8 @@ class WordsController < ApplicationController
   end
 
   def create
+    @word = params[:word]
+    @translation = params[:translation]
+    Word.create!()
   end
 end
