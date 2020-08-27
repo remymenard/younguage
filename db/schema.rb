@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_26_145422) do
+ActiveRecord::Schema.define(version: 2020_08_27_091141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,19 +28,19 @@ ActiveRecord::Schema.define(version: 2020_08_26_145422) do
 
   create_table "flashcards", force: :cascade do |t|
     t.bigint "word_id", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "response"
     t.boolean "mastered", default: false
-    t.index ["user_id"], name: "index_flashcards_on_user_id"
+    t.integer "score_result"
+    t.bigint "list_id"
+    t.index ["list_id"], name: "index_flashcards_on_list_id"
     t.index ["word_id"], name: "index_flashcards_on_word_id"
   end
 
   create_table "lists", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.jsonb "flashcards", default: [], array: true
   end
 
   create_table "topics", force: :cascade do |t|
@@ -68,9 +68,13 @@ ActiveRecord::Schema.define(version: 2020_08_26_145422) do
     t.string "translation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "score"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_words_on_user_id"
   end
 
   add_foreign_key "articles", "topics"
-  add_foreign_key "flashcards", "users"
+  add_foreign_key "flashcards", "lists"
   add_foreign_key "flashcards", "words"
+  add_foreign_key "words", "users"
 end
