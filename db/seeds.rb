@@ -1,4 +1,5 @@
 require 'selenium-webdriver'
+require 'webdrivers'
 require 'open-uri'
 require 'redcarpet'
 require 'nokogiri'
