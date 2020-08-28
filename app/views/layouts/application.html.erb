@@ -13,7 +13,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
+  <body style= "height: 500px;">
     <%= render 'shared/flashes' %>
     <%= yield %>
     <% unless action_name == "show" && controller_name == "articles" %>
