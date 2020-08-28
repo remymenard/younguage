@@ -1,10 +1,17 @@
+.padding-20 {
+  padding: 20px !important;
+}
+
+.head-banner-article {
+  height: 50px;
+  background-color: #FBFCFC;
+}
+
 .banner-article {
   background-color: #311D3F;
-  height: 40vh;
-  padding: 0px 30px;
+  height: 262px;
   display: flex;
-  justify-content: center;
-  // align-items: center;
+  justify-content: space-between;
   flex-direction: column;
 
   h1 {
@@ -14,96 +21,112 @@
     line-height: 38px;
   }
 
-  .theme {
-    display: inline-block;
-    text-align:center;
-    background: #F09766;
-    // border-radius: 20px;
-    color: $dark-purple;
-    margin-right: auto;
-    padding: 0px 5px;
-    border-radius: 20px;
+  .media-logo {
+    position: absolute;
+    background-color: $purple;
+    height: 83px;
+    width: 83px;
+    border-radius: 50%;
+    top: 266px; left: 255px;
   }
 }
+
+
+// ==> CONTENU DE L'ARTICLE <== //
 
 #content {
   position: relative;
   word-break: break-word;
   background-color: white;
+  color: #311d3f;
+
+  p {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 28px;
+    margin: 20px 0 16px 0;
+  }
+
+  h1, h2, h3, h4, h5, h5 {
+    margin-top: 1.2em;
+    line-height: 32px;
+    font-size: 22px !important;
+    font-weight: 600;
+    color: $dark-purple;
+
+  }
+
+  ul {
+    padding: 0 0 0 30px;
+  }
+
   img {
     max-width: 100%;
     border-radius: 5px;
   }
-  h1, h3, p {
-    color: $dark-purple;
-  }
-  h1, h3 {
-    margin-top: 1.2em;
-    line-height: 42px;
-    font-size: 34px;
-  }
 
-  p {
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 28px;
-    margin-top: 1.56em;
-    color: #71468E;
+  strong {
+    font-weight: unset;
   }
-  #translation {
-    display: flex;
-    align-items: center;
-    position: fixed;
-    bottom:0%;
-    background-color: $purple;
-    border-radius: 100px;
-    width: 346px;
-    height: 80px;
-    margin: 2% auto; /* Will not center vertically and won't work in IE6/7. */
-    left: 0;
-    right: 0;
-    padding: 0 10px;
+}
+
+
+
+
+
+#translation {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom:0%;
+  background-color: $purple;
+  border-radius: 100px;
+  width: 346px;
+  height: 80px;
+  margin: 2% auto; /* Will not center vertically and won't work in IE6/7. */
+  left: 0;
+  right: 0;
+  padding: 0 10px;
+  color: white;
+
+  #cross {
+    height: 60px;
+    max-width: 60px;
+    border-radius: 30px;
+    background-color: $dark-purple;
+    text-align: center;
     color: white;
+    line-height: 60px;
+    font-size: 40px;
+  }
+  #cloud {
+    height: 80px;
+    width: 80px;
+    max-width: 80px;
+    border-radius: 40px;
+    margin-left: 20px;
+    background-color: white;
+    color: $dark-purple;
+    text-align: center;
+    line-height: 80px;
+    font-size: 40px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.6);
+  }
 
-    #cross {
-      height: 60px;
-      max-width: 60px;
-      border-radius: 30px;
-      background-color: $dark-purple;
-      text-align: center;
-      color: white;
-      line-height: 60px;
-      font-size: 40px;
-    }
-    #cloud {
-      height: 80px;
-      width: 80px;
-      max-width: 80px;
-      border-radius: 40px;
-      margin-left: 20px;
-      background-color: white;
-      color: $dark-purple;
-      text-align: center;
-      line-height: 80px;
-      font-size: 40px;
-      box-shadow: 0 5px 10px rgba(0,0,0,.6);
-    }
+  #words {
+    padding-left: 60px;
+    font-family: 'Open Sans', 'sans-serif';
+  }
 
-    #words {
-      padding-left: 60px;
-      font-family: 'Open Sans', 'sans-serif';
-    }
+  #untranslated {
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 27px;
+  }
 
-    #untranslated {
-      font-weight: 300;
-      font-size: 20px;
-      line-height: 27px;
-    }
-
-    #translated {
-      font-weight: bold;
-      font-size: 20px;
-      line-height: 27px;
-    }
+  #translated {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 27px;
   }
 }

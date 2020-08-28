@@ -1,0 +1,28 @@
+.sticker {
+  color: $dark-purple;
+  font-weight: 600;
+  font-size: 14px; // 16px
+  text-align:center;
+  padding: 0 9px 3px 9px; // 0 10px 4px 10px
+  border-radius: 20px;
+}
+
+.future, .culture, .self {
+  background: #EA5D87;
+}
+.technology, .food, .startups {
+  background: #F09766;
+}
+.health, .programming {
+  background: #FAD665;
+}
+.science, .design {
+  background: #A9DC77;
+}
+.business, .politics {
+  background: #77DCE8;
+}
+.work, .human {
+  background: #AB9DF2;
+}
+
