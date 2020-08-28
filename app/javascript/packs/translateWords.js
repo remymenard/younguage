@@ -71,7 +71,6 @@ const activateButton = () => {
           translation: translated.innerText
         },
         success: function(result) {
-            alert('ok');
             $("#translation").hide();
         },
         error: function(result) {
