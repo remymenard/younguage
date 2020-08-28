@@ -26,8 +26,34 @@
           </div>
         <% end %>
       </div>
-
     </div>
+    <!-- FIN DE LA CARD -->
+
+    <!-- FAKE CARD : SÉRIE BONUS -->
+    <div class='rounded-element bg-white medium-purple-text p-3 mt-5'>
+      <!-- #1 Titre -->
+      <h3 class='text-center'>Série bonus</h3>
+      <!-- #2 Barre de progression -->
+      <div class='d-flex justify-content-between align-items-center my-3'>
+        <div class="bar">
+          <div class="percentage"  style="width: 5%"></div>
+        </div>
+        <p class='m-0 ml-3'>5%</p>
+      </div>
+      <!-- #3 Nombre de cartes restantes + Bouton Go! -->
+      <div class='d-flex justify-content-between align-items-center'>
+        <div class='w-100 d-flex justify-content-center align-items-center'><p class='m-0'>12 cartes</br>restantes</p></div>
+        <!-- Bouton Go! -->
+        <%= link_to list_path(1) do %>
+          <div class='go-button'>
+            <div class='w-100 d-flex justify-content-center align-items-center'>
+              <p class='m-0 mr-3'>Go!</p><i class="fas fa-long-arrow-alt-right"></i></i>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <!-- FIN DE LA CARD -->
   </div>
 </div>
 
