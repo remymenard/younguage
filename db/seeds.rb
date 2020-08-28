@@ -98,7 +98,7 @@ def convert_articles_to_yaml
       url: article.url,
       title: article.title,
       content: article.content,
-      author: article.content,
+      author: article.author,
       topic_id: article.topic_id
     }
   end
