@@ -25,7 +25,7 @@ startups = Topic.create!(name: "startups")
 def scrap_articles_from_medium(topic)
   options = Selenium::WebDriver::Chrome::Options.new
   options.add_argument('--headless')
-  browser = Selenium::WebDriver.for :chrome, options: options
+  browser = Selenium::WebDriver.for :chrome
   browser.get "https://medium.com/search?q=#{topic.name}"
   wait = Selenium::WebDriver::Wait.new(:timeout => 4)
 
@@ -45,9 +45,7 @@ def get_author_from_article(url)
   html_file = open(url).read
   html_doc = Nokogiri::HTML(html_file)
 
-  html_doc.search('h1').first.text
-
-  if html_doc.search('h1').first.text.nil?
+  unless html_doc.search('h1').first
     return 'unknown'
   else
     return html_doc.search('h1').first.text

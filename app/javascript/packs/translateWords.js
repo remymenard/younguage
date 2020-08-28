@@ -16,6 +16,7 @@ googleTranslate(word, sourceLanguage, targetLanguage)
     // console.log(response);
     untranslated.innerText = word
     translated.innerText = response
+  $("#translation").show();
 });
 }
 
@@ -71,12 +72,18 @@ const activateButton = () => {
         },
         success: function(result) {
             alert('ok');
+            $("#translation").hide();
         },
         error: function(result) {
             alert('error');
         }
     });
 });
+
+$("#cross").click(function (e) {
+  e.preventDefault();
+  $("#translation").hide();
+})
 }
 
 document.addEventListener('turbolinks:load', translateWords);
