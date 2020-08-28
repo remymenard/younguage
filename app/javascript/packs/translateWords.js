@@ -85,5 +85,7 @@ $("#cross").click(function (e) {
 })
 }
 
-document.addEventListener('turbolinks:load', translateWords);
-document.addEventListener('turbolinks:load', activateButton);
+translateWords();
+activateButton();
+// document.addEventListener('turbolinks:load', translateWords);
+// document.addEventListener('turbolinks:load', activateButton);
