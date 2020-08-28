@@ -10,6 +10,6 @@ class WordsController < ApplicationController
   def create
     @word = params[:word]
     @translation = params[:translation]
-    Word.create!()
+    Word.create!(user: current_user, word: @word, translation: @translation)
   end
 end
