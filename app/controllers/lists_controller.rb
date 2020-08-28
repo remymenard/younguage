@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   def show
-    @list = List.first
+    @list = List.last
   end
 
   def index
