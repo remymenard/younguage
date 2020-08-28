@@ -1,0 +1,30 @@
+
+.full-screen-card {
+  height: 540px;
+  color: white;
+}
+
+.go-button {
+  border: 1px solid;
+  border-radius: 30px;
+  border-color: $medium-purple;
+  color: $medium-purple;
+  padding: 3px 25px;
+  font-size: 25px;
+}
+
+.rounded-element {
+  border-radius: 30px;
+}
+
+.medium-purple-bg {
+  background-color: $medium-purple;
+}
+
+.medium-purple-text {
+  color: $medium-purple;
+}
+
+.purple-bg {
+  background-color: $purple;
+}
