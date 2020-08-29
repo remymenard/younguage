@@ -1,43 +1,33 @@
 
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+#menu-navbar {
   height: 80px;
+  width: 355px;
   position: fixed !important;
   bottom:0;
-  background-color: #393838;
-  opacity: 1;
-  width:90%;
+  background-color: $dark-purple;
   z-index: 100;
-
-  .fas {
-    color: white !important;
-  }
-
-  .far {
-    color: white !important;
-  }
+  border-radius: 50px;
+  margin: 10px;
+  padding: 10px;
 }
 
 .navbar-link {
   width: 60px;
+  height: 60px;
   border-radius: 50%;
-  text-align: center;
-  margin-left: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 40px;
 
   &:hover{
-    background-color: #522546;
+    text-decoration: none;
   }
 }
 
 .active{
   .navbar-link {
-    background-color: #522546;
+    background-color: $medium-purple;
   }
 }
-
-.navbar {
-  border-radius: 50px;
-  margin: 20px;
-}
-

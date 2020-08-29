@@ -1,35 +1,39 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon" style = "background-color: #311D3F">
+<div id="menu-navbar">
 
-  <ul class="nav">
-    <li class="<%= 'active' if current_page?(articles_path) %>">
+  <div class="d-flex flex-row justify-content-between">
+
+    <div class="<%= 'active' if current_page?(articles_path) %>">
       <%= link_to articles_path, class: "link" do %>
-        <div class= "navbar-link p-3">
-          <i class="fas fa-home"></i>
+        <div class= "navbar-link">
+          <span class="iconify" data-icon="icons8:home" data-inline="false"></span>
         </div>
       <% end %>
-    </li>
+    </div>
 
-    <li class="<%= 'active' if current_page?(words_path) %>">
+    <div class="<%= 'active' if current_page?(words_path) %>">
       <%= link_to words_path do %>
-        <div class= "navbar-link p-3" >
-          <i class="fas fa-list"></i>
+        <div class= "navbar-link" >
+          <span class="iconify" data-icon="bi:list-ul" data-inline="false"></span>
         </div>
       <% end %>
-    </li>
+    </div>
 
-     <li class="<%= 'active' if current_page?(lists_path) %>">
+    <div class="<%= 'active' if current_page?(lists_path) %>">
       <%= link_to lists_path do %>
-        <div class= "navbar-link p-3">
-          <i class="far fa-copy"></i>
+        <div class= "navbar-link">
+          <span class="iconify" data-icon="mdi:cards-outline" data-inline="false"></span>
         </div>
       <% end %>
-    </li>
+    </div>
 
-    <%= link_to "#" do %>
-      <div class= "navbar-link p-3">
-        <i class="far fa-user"></i>
-      </div>
-    <% end %>
-</ul>
+    <div class="<%= 'active' if current_page?(lists_path) %>">
+      <%= link_to "#" do %>
+        <div class= "navbar-link">
+            <span class="iconify" data-icon="cil:user" data-inline="false"></span>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
 
 </div>
