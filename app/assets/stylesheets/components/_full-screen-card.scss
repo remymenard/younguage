@@ -1,10 +1,33 @@
+.agenda {
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  .agenda-col {
+    width: 14%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    border-radius: 21px;
+  }
+
+  h3 {
+    margin-bottom: 10px;
+  }
+
+}
 
 .full-screen-card {
   height: 557px;
   color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
+  
   *:hover {
     text-decoration: none !important;
   }
@@ -13,14 +36,16 @@
 .go-button {
   border: 1px solid;
   border-radius: 30px;
-  border-color: $medium-purple;
-  color: $medium-purple;
   padding: 3px 25px;
   font-size: 25px;
 }
 
 .rounded-element {
   border-radius: 30px;
+}
+
+.medium-purple-border {
+  border-color: $medium-purple;
 }
 
 .medium-purple-bg {
