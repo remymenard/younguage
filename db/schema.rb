@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_27_091822) do
+ActiveRecord::Schema.define(version: 2020_08_31_145911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 2020_08_27_091822) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["topic_id"], name: "index_articles_on_topic_id"
+  end
+
+  create_table "daily_reports", force: :cascade do |t|
+    t.string "state"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "day"
+    t.string "letter"
   end
 
   create_table "flashcards", force: :cascade do |t|
@@ -71,6 +79,7 @@ ActiveRecord::Schema.define(version: 2020_08_27_091822) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "score"
     t.bigint "user_id"
+    t.datetime "last_review"
     t.index ["user_id"], name: "index_words_on_user_id"
   end
 

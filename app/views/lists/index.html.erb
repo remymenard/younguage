@@ -1,26 +1,47 @@
 <div class="container padding-10" >
-  <div class='full-screen-card rounded-element medium-purple-bg p-4'>
-    <h1 class='mb-4'>Flashcards</h1>
+  <div class='full-screen-card rounded-element medium-purple-bg d-flex flex-column justify-content-between p-4'>
 
-    <!-- CARD DE LISTE : SÉRIE DU JOUR -->
+    <!-- TITLE -->
+    <h1 class='mb-1'>Flashcards</h1>
+    <!-- AGENDA -->
+    <div>
+      <div class='agenda'>
+        <% @days.each do |report| %>
+          <div class='agenda-col <%= 'purple-bg' if @today == report.day %>'>
+            <div><h3><%= report.letter %></h3></div>
+            <div>
+              <% if report.state == 'done' %>
+                <i class="fas fa-check"></i>
+              <% elsif report.state == 'missed' %>
+                <i class="fas fa-times"></i>
+              <% else %>
+                <i class="far fa-circle"></i>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- CARD DE LISTE : RÉVISION DU JOUR -->
     <div class='rounded-element bg-white medium-purple-text p-3'>
       <!-- #1 Titre -->
-      <h3 class='text-center'>Série du jour</h3>
+      <h3 class='text-center'>Révision du jour</h3>
       <!-- #2 Barre de progression -->
       <div class='d-flex justify-content-between align-items-center my-3'>
         <div class="bar">
-          <div class="percentage"  style="width: 29%"></div>
+          <div class="percentage"  style="width: <%= @rdj_percentage %>%"></div>
         </div>
-        <p class='m-0 ml-3'>29%</p>
+        <p class='m-0 ml-3'><%= @rdj_percentage %>%</p>
       </div>
       <!-- #3 Nombre de cartes restantes + Bouton Go! -->
       <div class='d-flex justify-content-between align-items-center'>
-        <div class='w-100 d-flex justify-content-center align-items-center'><p class='m-0'>25 cartes</br>restantes</p></div>
+        <div class='w-100 d-flex justify-content-center align-items-center'><p class='m-0'><%= @rdj_cards_left %> cartes</br>restantes</p></div>
         <!-- Bouton Go! -->
-        <%= link_to list_path(List.last) do %>
-          <div class='go-button'>
+        <%= link_to list_path(@revision_du_jour) do %>
+          <div class='go-button medium-purple-border medium-purple-text'>
             <div class='w-100 d-flex justify-content-center align-items-center'>
-              <p class='m-0 mr-3'>Go!</p><i class="fas fa-long-arrow-alt-right"></i></i>
+              <p class='m-0 mr-3'>Go!</p><i class="fas fa-long-arrow-alt-right"></i>
             </div>
           </div>
         <% end %>
@@ -28,31 +49,33 @@
     </div>
     <!-- FIN DE LA CARD -->
 
-    <!-- FAKE CARD : SÉRIE BONUS -->
-    <div class='rounded-element bg-white medium-purple-text p-3 mt-5'>
+
+    <!-- CARD DE LISTE : 20 DERNIERS MOTS -->
+    <div class='rounded-element bg-medium-purple white-text border border-white p-3'>
       <!-- #1 Titre -->
-      <h3 class='text-center'>Série bonus</h3>
+      <h3 class='text-center'>20 derniers mots</h3>
       <!-- #2 Barre de progression -->
       <div class='d-flex justify-content-between align-items-center my-3'>
-        <div class="bar">
-          <div class="percentage"  style="width: 5%"></div>
+        <div class="bar border border-white">
+          <div class="percentage bg-white"  style="width: 20%"></div>
         </div>
-        <p class='m-0 ml-3'>5%</p>
+        <p class='m-0 ml-3'><%= @nc_percentage %>%</p>
       </div>
       <!-- #3 Nombre de cartes restantes + Bouton Go! -->
       <div class='d-flex justify-content-between align-items-center'>
-        <div class='w-100 d-flex justify-content-center align-items-center'><p class='m-0'>12 cartes</br>restantes</p></div>
+        <div class='w-100 d-flex justify-content-center align-items-center'><p class='m-0'><%= @nc_cards_left %> cartes</br>restantes</p></div>
         <!-- Bouton Go! -->
-        <%= link_to list_path(1) do %>
-          <div class='go-button'>
+        <%= link_to list_path(@new_cards) do %>
+          <div class='go-button border border-white text-white'>
             <div class='w-100 d-flex justify-content-center align-items-center'>
-              <p class='m-0 mr-3'>Go!</p><i class="fas fa-long-arrow-alt-right"></i></i>
+              <p class='m-0 mr-3'>Go!</p><i class="fas fa-long-arrow-alt-right"></i>
             </div>
           </div>
         <% end %>
       </div>
     </div>
     <!-- FIN DE LA CARD -->
+
   </div>
 </div>
 
