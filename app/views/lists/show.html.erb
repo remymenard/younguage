@@ -40,9 +40,12 @@
           </div>
           <!-- END OF FLASHCARD -->
         <% end %>
-        <div id='congrats' class='' style='display: none;'>
+        <div id='congrats' class='d-flex flex-column justify-content-center align-items-center' style='display: none;'>
           <h3>100%</h3>
           <p>Congratulations !</p>
+          <%= link_to lists_mark_as_done_path do %>
+            <div class=''>Mark as finished</div>
+          <% end %>
         </div>
       </div>
 

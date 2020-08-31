@@ -8,4 +8,5 @@ Rails.application.routes.draw do
     get 'flashcards/:id/next', to: 'flashcards#next', as: 'next_flashcard'
   end
   patch '/flashcards/:id/mastered', to: 'flashcards#mastered', as: 'flashcard_mastered_update'
+  patch '/lists/mark_as_done', to: 'lists#mark_as_done'
 end
