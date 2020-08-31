@@ -13,7 +13,7 @@
             <div class='fc-recto' style='display: none;'>
               <div class="flex-fc">
                 <p class='fc-word'><%= flashcard.word.word %></p>
-                <input class="" type="text" name="flashcard[response]" id="flashcard_response">
+                <input class="" type="text" name="flashcard[response]" id="flashcard_response" value= '' autocomplete="off">
                 <h6 class='fc-submit-btn'>SUBMIT</h6>
               </div>
             </div>
@@ -21,7 +21,7 @@
             <div class='fc-verso' style='display: none;'>
               <div class="flex-fc">
                 <p class='fc-word'><%= flashcard.word.word %></p>
-                <input class="" type="text" name="flashcard[response]" id="flashcard_response">
+                <input class="" type="text" name="flashcard[response]" value='' id="flashcard_response">
                 <h3 class='fc-translation'><%= flashcard.word.translation %></h3>
               </div>
 
@@ -40,13 +40,13 @@
           </div>
           <!-- END OF FLASHCARD -->
         <% end %>
-
+        <div id='congrats' class='' style='display: none;'>
+          <h3>100%</h3>
+          <p>Congratulations !</p>
+        </div>
       </div>
 
-      <div id='congrats' class='card m-3 p-3' style='display: none;'>
-        <h3>100%</h3>
-        <p>Congratulations</p>
-      </div>
+
     </div>
 
     <div class='d-flex flex-column justify-content-between align-items-center mb-2'>

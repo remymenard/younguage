@@ -3,17 +3,14 @@ const submitButtonSwitchFlashcard = () => {
     submit_btn.addEventListener('click', (event) => {
       event.preventDefault();
 
-      document.querySelectorAll('.flashcard_response').forEach((el) => {
-        el.addEventListener('click', (event) => {
-          console.log(event);
-        });
+      const flashcardResponse = document.getElementById('flashcard_response').value;
+      document.querySelectorAll('#flashcard_response').forEach((input) => {
+        input.value = flashcardResponse;
       });
 
-      // const response = event.srcElement.parentElement.children[2].innerText;
-      // console.log(response);
-      // event.srcElement.parentElement.parentElement.parentElement.children[1].children[1][2].innerText = response;
       event.srcElement.parentElement.parentElement.parentElement.children[0].style.display = 'none';
       event.srcElement.parentElement.parentElement.parentElement.children[1].style.display = 'block';
+
     });
   });
 }
@@ -21,8 +18,7 @@ const submitButtonSwitchFlashcard = () => {
 const masteredSubmit = () => {
   document.querySelectorAll('.mastered-submit').forEach((btn) => {
     btn.addEventListener('click', (event) => {
-      console.log(event);
-      event.srcElement.parentElement.children[4].children[0].value = 'true';
+      event.srcElement.parentElement.parentElement.parentElement[2].value = 'true';
     });
   });
 }
