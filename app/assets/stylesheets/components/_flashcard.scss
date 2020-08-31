@@ -1,7 +1,101 @@
-.submit-btn-css > input {
+.mastered-failed-buttons {
+  width: 180px;
+  position: absolute;
+  left: calc(50% - 90px);
+  top: 398px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .rounded-btn {
+    width: 66px;
+    height: 66px;
+    border-radius: 50% !important;
+    border: none;
+  }
+
+  .mastered-submit {
+    background-color: #2CF6B3 !important;
+    color: white !important;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .failed-submit {
+    background-color: #E23E57 !important;
+    color: white !important;
+    font-size: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.fc-word {
+  margin-top: 30px;
+  margin-bottom: 25px;
+}
+
+.fc-translation {
+  margin-top: 20px;
+  font-family: Open Sans;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 30px;
+  color: #311D3F;
+}
+
+.fc-submit-btn {
   background-color: $dark-purple;
   border-radius: 30px;
   color: white;
-  font: 10px, 'Open Sans', 'sans-serif';
+  font-size: 25px;
+  font-weight: 600;
+  padding: 3px 15px;
+  margin-top: 35px !important;
 }
+
+.fc-recto, .fc-verso {
+  height: 271px;
+  width: 297px;
+  margin: auto;
+
+
+  p {
+    font-weight: 300;
+    font-size: 30px;
+  }
+  .flex-fc {
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-evenly;
+    height: -webkit-fill-available;
+    width: 100%;
+    align-items: center;
+  }
+
+  #flashcard_response {
+    height: 57px;
+    width: 260px;
+    border-radius: 26px;
+    font-family: $headers-font;
+    font-weight: 300;
+    font-size: 27px;
+    border: none;
+    padding-left: 20px;
+  }
+}
+
+#congrats {
+  height: 271px;
+  width: 297px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 

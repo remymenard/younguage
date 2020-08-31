@@ -2,6 +2,9 @@
 .full-screen-card {
   height: 557px;
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   *:hover {
     text-decoration: none !important;
   }
