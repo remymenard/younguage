@@ -6,7 +6,7 @@
 
     </div>
     <div class="search search-container">
-      <%= simple_form_for words_path, method: :get,
+      <%= simple_form_for words_path, method: :get, remote: true,
         wrapper: :inline_form,
         html: { class: "form-inline" },
         wrapper_mappings: {
@@ -23,9 +23,11 @@
     <div class= "words" style= "background-color: white">
         <% @words.each do |word| %>
           <div class="row all-words">
+
             <p class= "word"><%= word.word %></p>  <p class= "translation"><%= word.translation %></p>
           </div>
         <% end %>
+
     </div>
 
   </div>
