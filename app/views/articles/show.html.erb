@@ -1,7 +1,12 @@
-<div class= 'head-banner-article'>
 
+
+
+<div class= 'head-banner-article'>
+  <%= link_to articles_path, class: 'btn m-2', style: 'color: #88304E' do %>
+    <i class="fas fa-chevron-left"></i>
+  <% end %>
 </div>
-<div class="banner-article container padding-20">
+<div class="banner-article banner-container">
   <div class='h-100 d-flex align-items-center'>
     <h1><%= @article.title %></h1>
   </div>
@@ -10,7 +15,6 @@
   </div>
   <div class='media-logo'></div>
 </div>
-
 <div class="container padding-20">
   <div id="content">
     <%= sanitize @article.content %>
@@ -28,16 +32,14 @@
         </div>
         <div class="col-3">
           <div class="tile" id="cloud">
-<div class="icon-container not-saved">
-<i class="icon off far fa-bookmark"></i>
-  <i class="icon on fa fa-bookmark"></i>
-</div>
-</div>
+            <div class="icon-container not-saved">
+              <i class="icon off far fa-bookmark"></i>
+              <i class="icon on fa fa-bookmark"></i>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
 <%= javascript_pack_tag 'translateWords' %>
