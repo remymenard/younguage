@@ -1,6 +1,6 @@
 document.addEventListener('turbolinks:load', () => displayWords());
 
-const results = document.querySelector('.words');
+const results = document.querySelectorAll('.translation');
 
 const input = document.querySelector('.search');
 
@@ -12,7 +12,7 @@ const drawResponseList = (data) => {
 };
 
 const autocomplete = (e) => {
-  fetch('@words_path')
+  fetch('/words', { headers: { accept: "application/json" }})
     .then(response => response.json())
     .then(data => drawResponseList(data));
 };
@@ -21,4 +21,5 @@ const displayWords = (event) => {
 
 }
  // méthode qui me renvoit tout les mots qui commence par ce qui est écrit -> dans le controller (méthode ? show)
- //
+ //each sur tout les mots 'translation'
+// choper les mots qui faut

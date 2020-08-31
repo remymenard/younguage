@@ -11,9 +11,10 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+
   </head>
 
-  <body style= "height: 500px;">
+  <body>
     <%= render 'shared/flashes' %>
     <%= yield %>
     <% unless action_name == "show" && controller_name == "articles" %>
