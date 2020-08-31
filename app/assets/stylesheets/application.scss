@@ -14,3 +14,11 @@
 
 @import "bootstrap/scss/bootstrap";
 @import 'easy-autocomplete/dist/easy-autocomplete';
+
+::selection {
+  background: #FFEED0; /* WebKit/Blink Browsers */
+}
+
+::-moz-selection {
+  background: #FFEED0; /* Gecko Browsers */
+}

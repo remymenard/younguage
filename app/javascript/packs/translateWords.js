@@ -3,6 +3,14 @@ const googleTranslate = require('free-google-translation');
 let untranslated;
 let translated;
 
+let isAddedToFlashCards = false;
+
+const resetState = () => {
+  translated.style.color = "rgb(255,255,255)";
+  $(".icon-container").removeClass("saved").addClass("not-saved");
+  isAddedToFlashCards = false;
+}
+
 const translation = (word) => {
 
 untranslated = document.getElementById("untranslated");
@@ -14,6 +22,7 @@ let targetLanguage = 'fr';
 googleTranslate(word, sourceLanguage, targetLanguage)
 .then(function(response) {
     // console.log(response);
+    resetState();
     untranslated.innerText = word
     translated.innerText = response
   $("#translation").show();
@@ -61,31 +70,33 @@ const translateWords = () => {
 const activateButton = () => {
   $("#cloud").click(function(e) {
     e.preventDefault();
-    $.ajax({
-        type: "POST",
-        url: "/words",
-        headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
-        data: {
-          word: untranslated.innerText,
-          translation: translated.innerText
-        },
-        success: function() {
-          $(".icon-container").removeClass("not-saved").addClass("saved");
-            untranslated.innerText = "Traduction"
-            translated.style.color = "rgb(101,255,144)";
-            translated.innerHTML = "enregistrée"
-            // $("#translation").hide();
-        },
-        error: function() {
-            alert("Could not save your flashcard on our servers, try again later. Sorry :'(");
-        }
-    });
+    if (!isAddedToFlashCards) {
+      $.ajax({
+          type: "POST",
+          url: "/words",
+          headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
+          data: {
+            word: untranslated.innerText,
+            translation: translated.innerText
+          },
+          success: function() {
+            $(".icon-container").removeClass("not-saved").addClass("saved");
+              untranslated.innerText = "Traduction"
+              translated.style.color = "rgb(101,255,144)";
+              translated.innerHTML = "enregistrée"
+              isAddedToFlashCards = true;
+              // $("#translation").hide();
+          },
+          error: function() {
+              alert("Could not save your flashcard on our servers, try again later. Sorry :'(");
+          }
+      });
+    }
 });
 
 $("#cross").click(function (e) {
   e.preventDefault();
-  translated.style.color = "rgb(255,255,255)";
-  $(".icon-container").removeClass("saved").addClass("not-saved");
+  resetState();
   $("#translation").hide();
 })
 }

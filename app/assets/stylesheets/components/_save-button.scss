@@ -103,7 +103,6 @@ $size: 80px;
     justify-content: center;
     -webkit-box-align: center;
     align-items: center;
-    font-size: 22px;
     text-decoration: none;
 }
 .icon-container:hover {
@@ -144,26 +143,33 @@ $size: 80px;
 }
 
 .icon {
-  color: #65FF90;
   position: absolute;
   transition: 0.25s ease-in;
   margin-top: 4px;
-  font-size: 50px;
+  font-size: 40px;
 }
 .saved .icon.off {
+  color: #65FF90;
+
   opacity: 0;
   transition: none;
 }
 .not-saved .icon.off {
+  color: $dark-purple;
+
   opacity: 1;
   transition: none;
 
 }
 .saved .icon.on {
+  color: #65FF90;
+
   animation-duration: 0.75s;
   animation-name: bounceIn;
 }
 .not-saved .icon.on {
+  color: #65FF90;
+
   opacity: 0;
   transition: opacity 0.3s, transform 1s;
   transform: scale(0);
