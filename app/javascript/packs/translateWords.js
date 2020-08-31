@@ -57,11 +57,10 @@ const translateWords = () => {
 
 }
 
+
 const activateButton = () => {
   $("#cloud").click(function(e) {
     e.preventDefault();
-    console.log(untranslated.innerText)
-    console.log(translated.innerText)
     $.ajax({
         type: "POST",
         url: "/words",
@@ -70,17 +69,23 @@ const activateButton = () => {
           word: untranslated.innerText,
           translation: translated.innerText
         },
-        success: function(result) {
-            $("#translation").hide();
+        success: function() {
+          $(".icon-container").removeClass("not-saved").addClass("saved");
+            untranslated.innerText = "Traduction"
+            translated.style.color = "rgb(101,255,144)";
+            translated.innerHTML = "enregistrée"
+            // $("#translation").hide();
         },
-        error: function(result) {
-            alert('error');
+        error: function() {
+            alert("Could not save your flashcard on our servers, try again later. Sorry :'(");
         }
     });
 });
 
 $("#cross").click(function (e) {
   e.preventDefault();
+  translated.style.color = "rgb(255,255,255)";
+  $(".icon-container").removeClass("saved").addClass("not-saved");
   $("#translation").hide();
 })
 }
