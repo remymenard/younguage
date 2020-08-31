@@ -6,12 +6,6 @@ const wordArray = Array.prototype.slice.call(results);
 const input = document.querySelector('#query');
 const words = document.querySelectorAll('.all-words')
 
-const drawResponseList = (data) => {
-  results.innerHTML = '';
-  data.words.forEach((word) => {
-    results.insertAdjacentHTML('beforeend', `<li>${word}</li>`);
-  });
-};
 
 const autocomplete = (e) => {
 
