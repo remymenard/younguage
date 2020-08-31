@@ -1,7 +1,11 @@
-<div class= 'head-banner-article'>
 
+
+<div class= 'head-banner-article'>
+  <%= link_to articles_path, class: 'btn m-2', style: 'color: #88304E' do %>
+    <i class="fas fa-chevron-left"></i>
+  <% end %>
 </div>
-<div class="banner-article container padding-20">
+<div class="banner-article banner-container">
   <div class='h-100 d-flex align-items-center'>
     <h1><%= @article.title %></h1>
   </div>
