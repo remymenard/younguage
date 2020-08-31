@@ -1,8 +1,8 @@
 <div class="container padding-10">
   <div class="full-screen-card rounded-element medium-purple-bg p-4">
-    <h1 class='mb-4'>Flashcards</h1>
+    <h1>Flashcards</h1>
 
-    <div class='purple-bg rounded-element'>
+    <div class='purple-bg rounded-element flashcard-page'>
       <div id='flashcards-list' data-list-id=<%= @list.id %>>
         <% @list.flashcards.shuffle.each_with_index do |flashcard, index| %>
           <!-- FLASH-CARD -->
@@ -10,27 +10,37 @@
                data-flashcard-id=<%= flashcard.id %>
                data-mastered="<%= flashcard.mastered? %>">
             <!-- RECTO -->
-            <div class='fc-recto m-3 p-3' style='display: none;'>
-              <h3><%= flashcard.word.word %></h3>
-              <%= simple_form_for flashcard, url: '#' do |f| %>
-                <%= f.input :response, label: false %>
-                <%= f.button :submit, 'SUBMIT', class: 'fc-submit-btn' %>
-              <% end %>
+            <div class='fc-recto' style='display: none;'>
+              <div class="flex-fc">
+                <p class='fc-word'><%= flashcard.word.word %></p>
+                <input class="" type="text" name="flashcard[response]" id="flashcard_response">
+                <h6 class='fc-submit-btn'>SUBMIT</h6>
+              </div>
             </div>
             <!-- VERSO -->
-            <div class='fc-verso m-3 p-3' style='display: none;'>
-              <h3><%= flashcard.word.word %></h3>
+            <div class='fc-verso' style='display: none;'>
+              <div class="flex-fc">
+                <p class='fc-word'><%= flashcard.word.word %></p>
+                <input class="" type="text" name="flashcard[response]" id="flashcard_response">
+                <h3 class='fc-translation'><%= flashcard.word.translation %></h3>
+              </div>
+
               <%= simple_form_for flashcard, url: flashcard_mastered_update_path(flashcard) do |f| %>
-                <%= f.input :response, label: false %>
-                <h3><%= flashcard.word.translation %></h3>
                 <%= f.input :mastered, as: :hidden, input_html: { value: "false" } %>
-                <%= f.button :submit, '✓', class: "mastered-submit btn-success" %>
-                <%= f.button :submit, 'X', class: "failed-submit btn-danger" %>
+                <div class='mastered-failed-buttons'>
+                  <%= button_tag type: 'submit', class: "failed-submit rounded-btn" do %>
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                  <% end %>
+                  <%= button_tag type: 'submit', class: "mastered-submit rounded-btn" do %>
+                    <i class="fas fa-check" aria-hidden="true"></i>
+                  <% end %>
+                </div>
               <% end %>
             </div>
           </div>
           <!-- END OF FLASHCARD -->
         <% end %>
+
       </div>
 
       <div id='congrats' class='card m-3 p-3' style='display: none;'>
@@ -39,6 +49,15 @@
       </div>
     </div>
 
+    <div class='d-flex flex-column justify-content-between align-items-center mb-2'>
+      <div class='d-flex flex-row justify-content-between align-items-center w-100 mb-1'>
+        <p class='m-0'><%= @list.flashcards.where(mastered: false).count %> cartes restantes</p>
+        <p class='m-0'><%= @percentage %>%</p>
+      </div>
+      <div class="bar" style='background-color: white'>
+        <div class="percentage"  style="width: <%= @percentage %>%"></div>
+      </div>
+    </div>
 
   </div>
 
