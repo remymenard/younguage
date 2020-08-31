@@ -1,5 +1,3 @@
-document.addEventListener('turbolinks:load', () => {displayFlashcards(), submitButtonSwitchFlashcard(), masteredSubmit()});
-
 const submitButtonSwitchFlashcard = () => {
   document.querySelectorAll('.fc-submit-btn').forEach((submit_btn) => {
     submit_btn.addEventListener('click', (event) => {
@@ -42,4 +40,6 @@ const displayFlashcards = () => {
   }
 }
 
-export { displayFlashcards };
+displayFlashcards()
+submitButtonSwitchFlashcard()
+masteredSubmit()
