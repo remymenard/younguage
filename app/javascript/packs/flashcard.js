@@ -11,9 +11,9 @@ const submitButtonSwitchFlashcard = () => {
         });
       });
 
-      const response = event.srcElement.parentElement.children[2].innerText;
+      // const response = event.srcElement.parentElement.children[2].innerText;
       // console.log(response);
-      event.srcElement.parentElement.parentElement.parentElement.children[1].children[1][2].innerText = response;
+      // event.srcElement.parentElement.parentElement.parentElement.children[1].children[1][2].innerText = response;
       event.srcElement.parentElement.parentElement.parentElement.children[0].style.display = 'none';
       event.srcElement.parentElement.parentElement.parentElement.children[1].style.display = 'block';
     });

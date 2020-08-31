@@ -8,8 +8,9 @@ class WordsController < ApplicationController
   end
 
   def create
-    @word = params[:word]
-    @translation = params[:translation]
-    Word.create!(user: current_user, word: @word, translation: @translation)
+    word = params[:word]
+    translation = params[:translation]
+    @word = Word.create(user: current_user, word: word, translation: translation)
+    Flashcard.create!(word: @word, list: List.last)
   end
 end

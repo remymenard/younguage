@@ -1,35 +1,47 @@
-<h1>List of flashcards</h1>
+<div class="container padding-10">
+  <div class="full-screen-card rounded-element medium-purple-bg p-4">
+    <h1 class='mb-4'>Flashcards</h1>
 
-<div id='flashcards-list' data-list-id=<%= @list.id %>>
-  <% @list.flashcards.shuffle.each_with_index do |flashcard, index| %>
-    <div class="flashcard-card"
-         data-flashcard-id=<%= flashcard.id %>
-         data-mastered="<%= flashcard.mastered? %>">
-      <div class='card fc-recto m-3 p-3' style='display: none;'>
-        <h3><%= flashcard.word.word %></h3>
-        <%= simple_form_for flashcard, url: '#' do |f| %>
-          <%= f.input :response, label: false %>
-          <%= f.button :submit, 'SUBMIT', class: 'fc-submit-btn btn-primary' %>
+    <div class='purple-bg rounded-element'>
+      <div id='flashcards-list' data-list-id=<%= @list.id %>>
+        <% @list.flashcards.shuffle.each_with_index do |flashcard, index| %>
+          <!-- FLASH-CARD -->
+          <div class="flashcard-card"
+               data-flashcard-id=<%= flashcard.id %>
+               data-mastered="<%= flashcard.mastered? %>">
+            <!-- RECTO -->
+            <div class='fc-recto m-3 p-3' style='display: none;'>
+              <h3><%= flashcard.word.word %></h3>
+              <%= simple_form_for flashcard, url: '#' do |f| %>
+                <%= f.input :response, label: false %>
+                <%= f.button :submit, 'SUBMIT', class: 'fc-submit-btn' %>
+              <% end %>
+            </div>
+            <!-- VERSO -->
+            <div class='fc-verso m-3 p-3' style='display: none;'>
+              <h3><%= flashcard.word.word %></h3>
+              <%= simple_form_for flashcard, url: flashcard_mastered_update_path(flashcard) do |f| %>
+                <%= f.input :response, label: false %>
+                <h3><%= flashcard.word.translation %></h3>
+                <%= f.input :mastered, as: :hidden, input_html: { value: "false" } %>
+                <%= f.button :submit, '✓', class: "mastered-submit btn-success" %>
+                <%= f.button :submit, 'X', class: "failed-submit btn-danger" %>
+              <% end %>
+            </div>
+          </div>
+          <!-- END OF FLASHCARD -->
         <% end %>
       </div>
 
-      <div class='card fc-verso m-3 p-3' style='display: none;'>
-        <h3><%= flashcard.word.word %></h3>
-        <%= simple_form_for flashcard, url: flashcard_mastered_update_path(flashcard) do |f| %>
-          <%= f.input :response, label: false %>
-          <h3><%= flashcard.word.translation %></h3>
-          <%= f.input :mastered, as: :hidden, input_html: { value: "false" } %>
-          <%= f.button :submit, '✓', class: "mastered-submit btn-success" %>
-          <%= f.button :submit, 'X', class: "failed-submit btn-danger" %>
-        <% end %>
+      <div id='congrats' class='card m-3 p-3' style='display: none;'>
+        <h3>100%</h3>
+        <p>Congratulations</p>
       </div>
     </div>
-  <% end %>
-</div>
 
-<div id='congrats' class='card m-3 p-3' style='display: none;'>
-  <h3>100%</h3>
-  <p>Congratulations</p>
+
+  </div>
+
 </div>
 
 <%= javascript_pack_tag 'flashcard' %>
