@@ -7,6 +7,7 @@ class ListsController < ApplicationController
     #   @list = List.new(name: 'Révision du jour')
     #   Word.order(:last_review).limit(30).each do |word|
     #     Flashcard.new(word: word, list: @list)
+    #   end
     # end
 
     @percentage = percentage(@list)
@@ -27,6 +28,24 @@ class ListsController < ApplicationController
     else
       @nc_cards_left = @new_cards.flashcards.where(mastered: false).count
     end
+  end
+
+  def mark_as_done
+    raise
+    daily_report = DailyReport.find_by(day: Date.today.strftime('%A'))
+    daily_report.state = 'done'
+    daily_report.save
+
+    list = List.find_by(name: 'Révision du jour')
+    list.delete
+
+    list = List.new(name: 'Révision du jour')
+    Word.order(:last_review).limit(30).each do |word|
+      Flashcard.create(word: word, list: list)
+    end
+    list.save
+
+    redirect_to lists_path
   end
 
   private
