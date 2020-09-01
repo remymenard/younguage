@@ -2,13 +2,8 @@ class FlashcardsController < ApplicationController
   def mastered
     @flashcard = Flashcard.find(params[:id])
     @flashcard.update(flashcard_params)
-    # if params[:flashcard][:mastered] == 'true'
-    #   @flashcard.mastered = true
-    #   @flashcard.save
-    # elsif params[:flashcard][:mastered] == 'false'
-    #   @flashcard.mastered = false
-    #   @flashcard.save
-    # end
+    @flashcard.update(last_view: Time.now)
+
     redirect_to @flashcard.list
   end
 
