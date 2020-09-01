@@ -43,8 +43,8 @@ end
 def convert_articles_to_markdown(articles)
   markdowns = []
   articles[0].each_with_index do |element, index|
-    p url = element.attribute("href")
-    p firstPart = url[0, url.index("?source")]
+    url = element.attribute("href")
+    puts firstPart = url[0, url.index("?source")]
     `mediumexporter #{firstPart} > #{Rails.root}/lib/articles/#{index}.md`
     lines = File.open("#{Rails.root}/lib/articles/#{index}.md").to_a
     begin
@@ -104,8 +104,8 @@ end
 def load_articles_from_yaml
   articles = YAML.load(File.read(File.join(Rails.root, "lib/articles.yml")))
   articles.each do |article|
-    puts Topic.where(name: article[:topic])
-    puts Article.create!(title: article[:title], content: article[:content], url: article[:url], author: article[:author], topic_id: Topic.where(name: article[:topic]).pluck(:id).first)
+    Topic.where(name: article[:topic])
+    Article.create!(title: article[:title], content: article[:content], url: article[:url], author: article[:author], topic_id: Topic.where(name: article[:topic]).pluck(:id).first)
   end
 end
 
@@ -125,6 +125,7 @@ if File.file?(File.join(Rails.root, "lib/articles.yml"))
 else
   Topic::NAMES.each do |name|
     topic = Topic.create!(name: name)
+    puts "generating articles for #{name}"
     generate_articles(topic)
   end
 end
