@@ -1,4 +1,4 @@
-document.addEventListener('turbolinks:load', () => displayWords());
+// document.addEventListener('turbolinks:load', () => displayWords());
 
 
 const results = document.querySelectorAll('.translation');

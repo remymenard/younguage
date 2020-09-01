@@ -24,9 +24,14 @@
     </div>
 
     <!-- CARD DE LISTE : RÉVISION DU JOUR -->
-    <div class='rounded-element bg-white medium-purple-text p-3'>
+    <div class='list-card'>
       <!-- #1 Titre -->
-      <h3 class='text-center'>Révision du jour</h3>
+      <div class='d-flex justify-content-center align-items-center'>
+        <h3 class='text-center m-0'>Révision du jour</h3>
+        <% if @today_report.state == 'done' %>
+          <i class="fas fa-check-circle completed-stample"></i>
+        <% end %>
+      </div>
       <!-- #2 Barre de progression -->
       <div class='d-flex justify-content-between align-items-center my-3'>
         <div class="bar">
@@ -34,16 +39,34 @@
         </div>
         <p class='m-0 ml-3'><%= @rdj_percentage %>%</p>
       </div>
-      <!-- #3 Nombre de cartes restantes + Bouton Go! -->
-      <div class='d-flex justify-content-between align-items-center'>
-        <div class='w-100 d-flex justify-content-center align-items-center'><p class='m-0'><%= @rdj_cards_left %> cartes</br>restantes</p></div>
-        <!-- Bouton Go! -->
 
-        <%= link_to list_path(@revision_du_jour) do %>
-          <div class='go-button medium-purple-border medium-purple-text'>
-            <div class='w-100 d-flex justify-content-center align-items-center'>
-              <p class='m-0 mr-3'>Go!</p><i class="fas fa-long-arrow-alt-right"></i>
+      <!-- #3 Bottom card -->
+      <div class='d-flex justify-content-between align-items-center'>
+
+        <% if @rdj_cards_left != 0 %>
+
+          <!-- Nombre de cartes restantes -->
+          <div class='w-100 d-flex justify-content-center align-items-center'>
+            <p class='m-0'><%= @rdj_cards_left %> cartes</br>restantes</p>
+          </div>
+          <!-- Bouton Go! -->
+          <%= link_to list_path(@revision_du_jour) do %>
+            <div class='go-button medium-purple-border medium-purple-text'>
+              <div class='w-100 d-flex justify-content-center align-items-center'>
+                <h4 class='m-0 mr-3'>Go!</h4><i class="fas fa-long-arrow-alt-right"></i>
+              </div>
             </div>
+          <% end %>
+
+        <% else %>
+          <div class='w-100 d-flex justify-content-center'>
+            <%= link_to lists_revision_du_jour_new_path, method: :post do %>
+              <div class='go-button medium-purple-border medium-purple-text'>
+                <div class='w-100 d-flex justify-content-center align-items-center'>
+                  <h4 class='m-0 mr-3'>Nouvelle série</h4><i class="fas fa-long-arrow-alt-right"></i>
+                </div>
+              </div>
+            <% end %>
           </div>
         <% end %>
       </div>
@@ -54,26 +77,45 @@
     <!-- CARD DE LISTE : 20 DERNIERS MOTS -->
     <div class='rounded-element bg-medium-purple white-text border border-white p-3'>
       <!-- #1 Titre -->
-      <h3 class='text-center'>20 derniers mots</h3>
+      <h3 class='text-center'>Nouveaux mots</h3>
       <!-- #2 Barre de progression -->
       <div class='d-flex justify-content-between align-items-center my-3'>
         <div class="bar border border-white">
-          <div class="percentage bg-white"  style="width: 20%"></div>
+          <div class="percentage bg-white"  style="width: <%= @nm_percentage %>%"></div>
         </div>
-        <p class='m-0 ml-3'><%= @nc_percentage %>%</p>
+        <p class='m-0 ml-3'><%= @nm_percentage %>%</p>
       </div>
-      <!-- #3 Nombre de cartes restantes + Bouton Go! -->
-      <div class='d-flex justify-content-between align-items-center'>
-        <div class='w-100 d-flex justify-content-center align-items-center'><p class='m-0'><%= @nc_cards_left %> cartes</br>restantes</p></div>
-        <!-- Bouton Go! -->
 
-        <%= link_to list_path(@new_cards) do %>
-          <div class='go-button border border-white text-white'>
-            <div class='w-100 d-flex justify-content-center align-items-center'>
-              <p class='m-0 mr-3'>Go!</p><i class="fas fa-long-arrow-alt-right"></i>
+      <!-- #3 Bottom card -->
+      <div class='d-flex justify-content-between align-items-center'>
+
+        <% if @nm_cards_left != 0 %>
+
+          <!-- Nombre de cartes restantes -->
+          <div class='w-100 d-flex justify-content-center align-items-center'>
+            <p class='m-0'><%= @nm_cards_left %> cartes</br>restantes</p>
+          </div>
+          <!-- Bouton Go! -->
+          <%= link_to list_path(@nouveaux_mots) do %>
+            <div class='go-button border border-white text-white'>
+              <div class='w-100 d-flex justify-content-center align-items-center'>
+                <h4 class='m-0 mr-3'>Go!</h4><i class="fas fa-long-arrow-alt-right"></i>
+              </div>
             </div>
+          <% end %>
+
+        <% else %>
+          <div class='w-100 d-flex justify-content-center'>
+            <%= link_to lists_nouveaux_mots_new_path, method: :post do %>
+              <div class='go-button border border-white text-white'>
+                <div class='w-100 d-flex justify-content-center align-items-center'>
+                  <h4 class='m-0 mr-3'>Nouvelle série</h4><i class="fas fa-long-arrow-alt-right"></i>
+                </div>
+              </div>
+            <% end %>
           </div>
         <% end %>
+
       </div>
     </div>
     <!-- FIN DE LA CARD -->
