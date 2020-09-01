@@ -1,5 +1,5 @@
 <div class="container padding-10">
-  <div class="full-screen-card rounded-element medium-purple-bg p-4">
+  <div class="full-screen-card rounded-element medium-purple-bg d-flex flex-column justify-content-between p-4">
     <h1>Flashcards</h1>
 
     <div class='purple-bg rounded-element flashcard-page'>
@@ -40,9 +40,14 @@
           </div>
           <!-- END OF FLASHCARD -->
         <% end %>
-        <div id='congrats' class='' style='display: none;'>
-          <h3>100%</h3>
-          <p>Congratulations !</p>
+        <div id='congrats' style='display: none;'>
+          <div class='d-flex flex-column justify-content-center align-items-center'>
+            <h3>100%</h3>
+            <p>Congratulations !</p>
+            <%= link_to daily_reports_mark_a_day_as_done_path, method: 'PATCH' do %>
+              <div class='' id='mark-as-finished'>Mark as finished</div>
+            <% end %>
+          </div>
         </div>
       </div>
 

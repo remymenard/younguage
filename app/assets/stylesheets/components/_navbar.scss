@@ -36,3 +36,11 @@
     background-color: $medium-purple;
   }
 }
+
+.head-banner-article {
+  width: 100%;
+  position: fixed !important;
+  top:0;
+  z-index: 100;
+
+}
