@@ -28,11 +28,12 @@
 
   .media-logo {
     position: absolute;
-    background-color: $purple;
     height: 83px;
     width: 83px;
     border-radius: 50%;
     top: 266px; left: 255px;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Medium_logo_Monogram.svg/1200px-Medium_logo_Monogram.svg.png);
+    background-size: cover;
   }
 }
 
