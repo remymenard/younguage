@@ -7,9 +7,10 @@
   <% @articles.each do |article| %>
 
     <%= link_to article_path(article), class: 'article-link' do %>
-      <div class="article-item" " style = "color: #311D3F">
+      <div class="article-item"  style = "color: #311D3F">
         <div>
-          <h3><%= article.title %></h3>
+          <h3><%= article.title.first(62) %></h3>
+
         </div>
 
         <div class= "d-flex flex-row justify-content-between align-items-center">
