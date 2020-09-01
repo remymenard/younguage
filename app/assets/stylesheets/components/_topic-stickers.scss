@@ -5,7 +5,16 @@
   text-align:center;
   padding: 0 9px 3px 9px; // 0 10px 4px 10px
   border-radius: 20px;
-  margin-bottom: 15px;
+  display: inline-block;
+  // width: 30%;
+}
+
+.sticker_list_margin {
+  margin: 5px;
+}
+
+.empty-sticker {
+  background-color: white;
 }
 
 .future, .culture, .self {

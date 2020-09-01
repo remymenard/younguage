@@ -24,7 +24,6 @@ require("easy-autocomplete")
 
 // External imports
 import "bootstrap";
-import "packs/search"
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';

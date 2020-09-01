@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'articles#index'
 
+  get 'edit_topics', to: 'topics#edit'
+  post 'edit_topics', to: 'topics#post'
+
   resources :articles, only: [:index, :show]
   resources :words, only: [:create, :index]
   resources :lists, only: [:show, :index] do
