@@ -27,14 +27,21 @@ const congratulationsDisplay = () => {
   document.getElementById('congrats').style.display = 'block';
 }
 
+const congratulationsDisplayNone = () => {
+  document.getElementById('congrats').style.display = 'none';
+}
+
 const displayFlashcards = () => {
   const unmasteredFlashcards = document.querySelectorAll('.flashcard-card[data-mastered="false"]');
   if (unmasteredFlashcards.length == 0) {
     congratulationsDisplay();
   } else {
+    // congratulationsDisplayNone();
     unmasteredFlashcards[0].querySelector('.fc-recto').style.display = 'block';
   }
 }
+
+
 
 displayFlashcards()
 submitButtonSwitchFlashcard()
