@@ -1,3 +1,5 @@
+
+
 class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
@@ -20,32 +22,16 @@ class ListsController < ApplicationController
   end
 
   def nouveaux_mots_new
-    new_list = new('Nouveaux mots')
-    Word.order(created_at: :desc).limit(10).each do |word|
-      Flashcard.create(word: word, list: new_list, last_view: Time.now)
-    end
+    new_list = Lists::ResetService.new('Nouveaux mots').call
     redirect_to list_path(new_list)
   end
 
   def revision_du_jour_new
-    new_list = new('Révision du jour')
-    Word.order(:last_review).limit(30).each do |word|
-      Flashcard.create(word: word, list: new_list, last_view: Time.now)
-    end
+    new_list = Lists::ResetService.new('Révision du jour').call
     redirect_to list_path(new_list)
   end
 
   private
-
-  def new(name)
-    list = List.find_by(name: name)
-    list.flashcards.each { |flashcard| flashcard.destroy }
-    list.destroy
-
-    new_list = List.new(name: name)
-    new_list.save
-    return new_list
-  end
 
   def percentage(list)
     total_cards_num = list.flashcards.count.to_f

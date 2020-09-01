@@ -1,0 +1,17 @@
+:concurrency: 3
+:timeout: 30
+:verbose: true
+:queues:  # Queue priority: https://github.com/mperham/sidekiq/wiki/Advanced-Options
+  - default
+  - mailers
+
+
+:schedule:
+  reset_lists:
+    cron: '0 0 0 * * *' # une fois par jour
+    class: ResetLists
+
+  reset_daily_report:
+    cron: '*/20 * * * * *'
+    # cron: '0 0 0 * * 0' # une fois par semaine
+    class: ResetDailyReport

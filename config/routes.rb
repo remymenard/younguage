@@ -13,4 +13,9 @@ Rails.application.routes.draw do
   post '/lists/revision_du_jour_new', to: 'lists#revision_du_jour_new'
   post '/lists/nouveaux_mots_new', to: 'lists#nouveaux_mots_new'
   patch '/flashcards/:id/mastered', to: 'flashcards#mastered', as: 'flashcard_mastered_update'
+
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| true } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end
