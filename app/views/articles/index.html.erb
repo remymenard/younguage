@@ -11,18 +11,18 @@
         <div>
           <h3><%= article.title %></h3>
         </div>
-
+        <br>
         <div class= "d-flex flex-row justify-content-between align-items-center">
           <div class='d-flex justify-content-start align-items-center'>
-            <div class='media-logo-medium'></div>
+              <img class="media-logo-medium" src="<%= image_url("medium-logo.jpeg") %>" alt="">
             <div class='article-infos ml-3 d-flex flex-column align-items-start'>
               <!--<div class='article-date'>5 novembre</div>-->
               <br>
-              <div class='article-media'>Medium</div>
+              <!--<div class='article-media'></div>-->
             </div>
           </div>
 
-          <div class="sticker technology"><%= article.topic.name %></div>
+          <div class="sticker <%= article.topic.name  %>"><%= article.topic.name %></div>
         </div>
 
       </div>
