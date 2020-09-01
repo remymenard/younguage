@@ -1,6 +1,7 @@
 class TopicsController < ApplicationController
   def edit
     @user = current_user
+    @topics = @user.topics
   end
 
   def post

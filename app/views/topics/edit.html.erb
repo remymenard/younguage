@@ -4,7 +4,7 @@
 <div class="topics-div">
   <div class="topics-list">
     <% Topic::NAMES.each do |topic_name| %>
-      <div id="<%= topic_name %>" class="sticker empty-sticker sticker_list_margin"><%= topic_name %></div>
+      <div id="<%= topic_name %>" class="sticker empty-sticker sticker_list_margin <% if @topics.include? topic_name %><%= topic_name %><% end %>"><%= topic_name %></div>
     <% end %>
   </div>
   <form action="" method="POST" class="topics-form">

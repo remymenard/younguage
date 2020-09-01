@@ -1,5 +1,5 @@
 .article-index-padding {
-  padding: 10px 10px 90px 10px !important;
+  padding: 10px 25px 90px 25px !important
 }
 
 #youngage {
@@ -12,14 +12,13 @@
 
 .article-item {
   background-color: rgba(250, 250, 250, .9);
-  height: 245px;
   border-radius: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-size: 14px;
   padding: 25px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 
   h3 {
     font-weight: 600;
@@ -33,6 +32,14 @@
   border-radius: 50%;
   background-size: cover;
 }
+
+.img-responsive{
+  height: 55px;
+  width: 55px;
+  background-color: $purple;
+  border-radius: 50%;
+}
+
 
 .article-infos {
   font-size: 16px;
