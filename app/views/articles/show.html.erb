@@ -2,16 +2,22 @@
 
 
 <div id = "myBtn" class= 'head-banner-article'>
-  <%= link_to articles_path, class: 'btn m-2', style: 'color: #88304E' do %>
-    <i class="fas fa-chevron-left"></i>
-  <% end %>
+  <div class="d-flex" style = "color: #888888">
+    <%= link_to articles_path, class: 'btn mt-2', style: 'color: #888888'  do %>
+      <i class="fas fa-chevron-left"></i>
+    <% end %>
+    <div class= "d-flex mt-3">
+      <p><%= @article.title.first(35) %></p> <p> ...</p>
+    </div>
+  </div>
+
 </div>
 <div class="banner-article banner-container">
   <div class='h-100 d-flex align-items-center'>
     <h1><%= @article.title %></h1>
   </div>
   <div class='d-flex'>
-    <div class="sticker technology"><%= @article.topic.name %></div>
+    <div class="sticker technology mb-3"><%= @article.topic.name %></div>
   </div>
   <div class='media-logo'></div>
 </div>
