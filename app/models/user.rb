@@ -12,7 +12,7 @@ class User < ApplicationRecord
   private
   def check_topics
     if !topics.all? { |e| Topic::NAMES.include?(e) }
-      errors.add(:topics, 'NOT GOOD')
+      errors.add(:topics, "The selected topics doesn't exist.")
     end
   end
 end
