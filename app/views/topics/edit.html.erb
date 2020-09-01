@@ -1,0 +1,17 @@
+<div class="container grid-topics">
+  <% Topic::NAMES.each do |topic_name| %>
+
+      <div class="sticker empty-sticker" ><%= topic_name %></div>
+  <% end %>
+</div>
+
+
+<form action="" method="POST" class="topics-form">
+
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input type="submit" value="SUBMIT!">
+  </div>
+</form>
+
+
+<%= javascript_pack_tag 'selectTopics' %>
