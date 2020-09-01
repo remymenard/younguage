@@ -1,17 +1,5 @@
 const stickers = document.querySelectorAll(".sticker");
 const form = document.querySelector('.topics-form');
-const topicsInput = document.querySelectorAll(".topicInput");
-
-const loadAlreadySelectedTopic = () => {
-  topicsInput.forEach((input) => {
-    console.log(input.id)
-    document.querySelector(`.sticker#${input.id}`).classList.add(`${input.id}`);
-    // if($(`#${topic}`).length > 0) {
-    //   console.log
-    // }
-    // console.log
-  })
-}
 
 const ColorStickerOnClick = () => {
 
@@ -30,5 +18,4 @@ const ColorStickerOnClick = () => {
   });
 }
 
-loadAlreadySelectedTopic()
 ColorStickerOnClick()

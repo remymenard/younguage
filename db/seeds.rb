@@ -8,25 +8,10 @@ require 'yaml'
 Article.delete_all
 Topic.delete_all
 
-technology = Topic.create!(name: "technology")
-future = Topic.create!(name: "future")
-health = Topic.create!(name: "health")
-work = Topic.create!(name: "work")
-science = Topic.create!(name: "science")
-business = Topic.create!(name: "business")
-culture = Topic.create!(name: "culture")
-food = Topic.create!(name: "food")
-programming = Topic.create!(name: "programming")
-design = Topic.create!(name: "design")
-politics = Topic.create!(name: "politics")
-human = Topic.create!(name: "human")
-selfcare = Topic.create!(name: "selfcare")
-startups = Topic.create!(name: "startups")
-
 def scrap_articles_from_medium(topic)
   options = Selenium::WebDriver::Chrome::Options.new
   options.add_argument("--headless")
-  browser = Selenium::WebDriver.for :chrome
+  browser = Selenium::WebDriver.for :chrome, options: options
   browser.get "https://medium.com/search?q=#{topic.name}"
   wait = Selenium::WebDriver::Wait.new(:timeout => 4)
 
@@ -37,7 +22,9 @@ def scrap_articles_from_medium(topic)
   all_a = browser.find_elements(:xpath => "//a").select do |element|
     element.text == "Read more…"
   end
-  all_a
+  all_dates = browser.find_elements(:xpath => "//dates")
+  # browser.close
+  [all_a, all_dates]
 end
 
 def get_author_from_article(url)
@@ -55,12 +42,16 @@ end
 
 def convert_articles_to_markdown(articles)
   markdowns = []
-  articles.each_with_index do |element, index|
+  articles[0].each_with_index do |element, index|
     p url = element.attribute("href")
     p firstPart = url[0, url.index("?source")]
     `mediumexporter #{firstPart} > #{Rails.root}/lib/articles/#{index}.md`
     lines = File.open("#{Rails.root}/lib/articles/#{index}.md").to_a
-    title = lines[1][2..-2]
+    begin
+      title = lines[1][2..-2]
+    rescue
+      return
+    end
     `touch #{Rails.root}/lib/articles/#{index}.1.md`
     File.open("#{Rails.root}/lib/articles/#{index}.1.md", "w") do |out_file|
       File.foreach("#{Rails.root}/lib/articles/#{index}.md").with_index do |line, line_number|
@@ -72,6 +63,7 @@ def convert_articles_to_markdown(articles)
       `rm #{Rails.root}/lib/articles/#{index}.md`
       `rm #{Rails.root}/lib/articles/#{index}.1.md`
     else
+      # pry
       markdowns << { title: title, file_location: "#{Rails.root}/lib/articles/#{index}.1.md", url: url, author: get_author_from_article(url) }
     end
   end
@@ -82,6 +74,7 @@ def save_articles_to_db(markdowns, topic)
   renderer = Redcarpet::Render::HTML.new
   redcarpet = Redcarpet::Markdown.new(renderer)
   articles = []
+  return nil if markdowns.nil?
   markdowns.each do |markdown|
     file = File.open(markdown[:file_location]).read
     content = redcarpet.render(file).delete("\n")
@@ -99,7 +92,7 @@ def convert_articles_to_yaml
       title: article.title,
       content: article.content,
       author: article.author,
-      topic_id: article.topic_id
+      topic: article.topic.name
     }
   end
   path = File.join(Rails.root, "lib/")
@@ -109,10 +102,10 @@ def convert_articles_to_yaml
 end
 
 def load_articles_from_yaml
-  technology = Topic.create!(name: "technology")
   articles = YAML.load(File.read(File.join(Rails.root, "lib/articles.yml")))
   articles.each do |article|
-    puts Article.create!(title: article[:title], content: article[:content], url: article[:url], author: article[:author], topic: technology)
+    puts Topic.where(name: article[:topic])
+    puts Article.create!(title: article[:title], content: article[:content], url: article[:url], author: article[:author], topic_id: Topic.where(name: article[:topic]).pluck(:id).first)
   end
 end
 
@@ -125,8 +118,13 @@ def generate_articles(topic)
 end
 
 if File.file?(File.join(Rails.root, "lib/articles.yml"))
-    load_articles_from_yaml
+  Topic::NAMES.each do |name|
+    topic = Topic.create!(name: name)
+  end
+  load_articles_from_yaml
 else
-  generate_articles(technology)
-  generate_articles(science)
+  Topic::NAMES.each do |name|
+    topic = Topic.create!(name: name)
+    generate_articles(topic)
+  end
 end
