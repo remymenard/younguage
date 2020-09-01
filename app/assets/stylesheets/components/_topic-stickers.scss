@@ -6,12 +6,15 @@
   padding: 0 9px 3px 9px; // 0 10px 4px 10px
   border-radius: 20px;
   display: inline-block;
-  width: 30%;
+  // width: 30%;
+}
+
+.sticker_list_margin {
+  margin: 5px;
 }
 
 .empty-sticker {
   background-color: white;
-  margin-bottom: 15px;
 }
 
 .future, .culture, .self {

@@ -128,4 +128,5 @@ if File.file?(File.join(Rails.root, "lib/articles.yml"))
     load_articles_from_yaml
 else
   generate_articles(technology)
+  generate_articles(science)
 end
