@@ -28,8 +28,9 @@
 .media-logo-medium{
   height: 55px;
   width: 55px;
-  background-color: $purple;
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Medium_logo_Monogram.svg/1200px-Medium_logo_Monogram.svg.png);
   border-radius: 50%;
+  background-size: cover;
 }
 
 .img-responsive{

@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2020_09_01_113235) do
     t.boolean "mastered", default: false
     t.integer "score_result"
     t.bigint "list_id"
+    t.datetime "last_view"
     t.index ["list_id"], name: "index_flashcards_on_list_id"
     t.index ["word_id"], name: "index_flashcards_on_word_id"
   end

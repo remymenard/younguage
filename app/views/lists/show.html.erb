@@ -4,7 +4,7 @@
 
     <div class='purple-bg rounded-element flashcard-page'>
       <div id='flashcards-list' data-list-id=<%= @list.id %>>
-        <% @list.flashcards.shuffle.each_with_index do |flashcard, index| %>
+        <% @flashcards.order(:last_view).each_with_index do |flashcard, index| %>
           <!-- FLASH-CARD -->
           <div class="flashcard-card"
                data-flashcard-id=<%= flashcard.id %>
@@ -44,7 +44,7 @@
           <div class='d-flex flex-column justify-content-center align-items-center'>
             <h3>100%</h3>
             <p>Congratulations !</p>
-            <%= link_to daily_reports_mark_a_day_as_done_path, method: 'PATCH' do %>
+            <%= link_to list_daily_reports_mark_a_day_as_done_path(@list), method: 'PATCH' do %>
               <div class='' id='mark-as-finished'>Mark as finished</div>
             <% end %>
           </div>
