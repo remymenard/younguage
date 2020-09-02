@@ -5,7 +5,7 @@ class FlashcardsController < ApplicationController
     @flashcard.update(last_view: Time.now)
 
     # redirect_to @flashcard.list
-    redirect_to list(@flashcard)
+    redirect_to list(@flashcard.list)
   end
 
   def index
