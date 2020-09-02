@@ -20,6 +20,8 @@ const autocomplete = (e) => {
 const displayWords = (event) => {
   input.addEventListener('keyup', autocomplete);
 }
+
+displayWords();
  // méthode qui me renvoit tout les mots qui commence par ce qui est écrit -> dans le controller (méthode ? show)
  //each sur tout les mots 'translation'
 // choper les mots qui faut

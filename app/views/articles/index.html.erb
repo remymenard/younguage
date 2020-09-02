@@ -1,7 +1,7 @@
 <div class="container article-index-padding">
 
     <img class="text-center logo-younguage" src="<%= image_url("younguage.png") %>" alt="">
-
+    <br><br>
   <% @articles.each do |article| %>
 
     <%= link_to article_path(article), class: 'article-link' do %>
@@ -15,9 +15,8 @@
           <div class='d-flex justify-content-start align-items-center'>
               <img class="media-logo-medium" src="<%= image_url("medium-logo.jpeg") %>" alt="">
             <div class='article-infos ml-3 d-flex flex-column align-items-start'>
-              <!--<div class='article-date'>5 novembre</div>-->
-              <br>
-              <!--<div class='article-media'></div>-->
+              <div class='article-date'>5 novembre 2019</div>
+              <div class='article-media'><%= article.author %></div>
             </div>
           </div>
 

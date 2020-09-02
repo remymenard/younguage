@@ -19,6 +19,7 @@
   font-size: 14px;
   padding: 25px;
   margin-bottom: 20px;
+  min-height: 261px;
 
   h3 {
     font-weight: 600;
@@ -42,11 +43,11 @@
 
 
 .article-infos {
-  font-size: 16px;
   font-family: $headers-font;
   line-height: 20px;
   .article-date{
     font-weight: 600;
+    font-size: 12px;
   }
   .article-media{
     font-weight: 300;

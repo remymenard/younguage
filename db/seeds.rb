@@ -15,8 +15,9 @@ def scrap_articles_from_medium(topic)
   browser.get "https://medium.com/search?q=#{topic.name}"
   wait = Selenium::WebDriver::Wait.new(:timeout => 4)
 
+  sleep 3
   browser.execute_script("window.scrollTo(0, document.body.scrollHeight)")
-  sleep 0.5
+  sleep 3
   browser.execute_script("window.scrollTo(0, document.body.scrollHeight)")
 
   all_a = browser.find_elements(:xpath => "//a").select do |element|
