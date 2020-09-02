@@ -1,5 +1,3 @@
-require 'csv'
-
 puts '[1/4] Cleaning database...'
 Flashcard.delete_all
 List.delete_all
@@ -16,12 +14,8 @@ puts 'password: password'
 puts '[2/4] Finished!'
 
 puts '[3/4] Creating some fake words'
-filepath = "#{Rails.root}/db/words.csv"
-CSV.foreach(filepath) do |row|
-  User.all.each do |user|
-    word = Word.new(word: row[0], translation: row[1], user: user)
-    word.save!
-  end
+User.all.each do |user|
+  Words::NewService.new(user).call
 end
 puts '[3/4] Finished!'
 
