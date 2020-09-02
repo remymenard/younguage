@@ -1,4 +1,4 @@
-<div class="container padding-10">
+<div class="container">
   <div class="full-screen-card rounded-element" style = "background-color: #88304E">
     <div class= "row">
       <h1 class= "pl-3 m-3">Lexique</h1>
@@ -24,7 +24,7 @@
         <% @words.each do |word| %>
           <div class="row all-words">
 
-            <p class= "word"><%= word.word %></p>  <p class= "translation"><%= word.translation %></p>
+            <p class= "word"><%= word.word %></p><p class= "translation"><%= word.translation %></>
           </div>
         <% end %>
 

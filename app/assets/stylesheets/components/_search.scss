@@ -7,16 +7,17 @@
     padding: 5px;
     padding-left: 20px;
     width: 90%;
+    border: none;
   }
 }
 
 .words {
   .all-words {
-    padding-left: 30px;
-    padding-right: 30px;
-    margin: 10px;
+    height: 26px;
+    margin: 1px 19px 13px 19px;
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid #E5E5E5;
   }
   border-radius: 30px;
   margin: 10px;
