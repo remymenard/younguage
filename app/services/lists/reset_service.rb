@@ -22,8 +22,10 @@ module Lists
 
     def new(list_name)
       list = List.find_by(name: list_name)
-      list.flashcards.each { |flashcard| flashcard.destroy }
-      list.destroy
+      unless list.nil?
+        list.flashcards.each { |flashcard| flashcard.destroy }
+        list.destroy
+      end
 
       new_list = List.new(name: list_name)
       new_list.save
