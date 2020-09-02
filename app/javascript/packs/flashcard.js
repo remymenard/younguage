@@ -3,9 +3,13 @@ const submitButtonSwitchFlashcard = () => {
     submit_btn.addEventListener('click', (event) => {
       event.preventDefault();
 
-      const flashcardResponse = document.getElementById('flashcard_response').value;
-      document.querySelectorAll('#flashcard_response').forEach((input) => {
+      const flashcardResponse = document.getElementById('flashcard_response_recto').value;
+      console.log(flashcardResponse);
+
+      document.querySelectorAll('#flashcard_response_verso').forEach((input) => {
+        console.log(input.value);
         input.value = flashcardResponse;
+        console.log(input.value);
       });
 
       event.srcElement.parentElement.parentElement.parentElement.children[0].style.display = 'none';

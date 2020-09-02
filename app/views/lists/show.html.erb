@@ -2,7 +2,7 @@
   <div class="full-screen-card rounded-element medium-purple-bg d-flex flex-column justify-content-between p-4">
     <h1>Flashcards</h1>
 
-    <div class='purple-bg rounded-element flashcard-page'>
+    <div class='flashcard-page'>
       <div id='flashcards-list' data-list-id=<%= @list.id %>>
         <% @flashcards.order(:last_view).each_with_index do |flashcard, index| %>
           <!-- FLASH-CARD -->
@@ -10,19 +10,19 @@
                data-flashcard-id=<%= flashcard.id %>
                data-mastered="<%= flashcard.mastered? %>">
             <!-- RECTO -->
-            <div class='fc-recto' style='display: none;'>
+            <div class='fc-recto purple-bg rounded-element' style='display: none;'>
               <div class="flex-fc">
-                <p class='fc-word'><%= flashcard.word.word %></p>
-                <input class="" type="text" name="flashcard[response]" id="flashcard_response" value= '' autocomplete="off">
+                <p class='fc-word'><%= flashcard.word.translation %></p>
+                <input class="fc-input" type="text" name="flashcard[response]" id="flashcard_response_recto" value= '' autocomplete="off">
                 <h6 class='fc-submit-btn'>SUBMIT</h6>
               </div>
             </div>
             <!-- VERSO -->
-            <div class='fc-verso' style='display: none;'>
+            <div class='fc-verso bg-white rounded-element' style='display: none;'>
               <div class="flex-fc">
-                <p class='fc-word'><%= flashcard.word.word %></p>
-                <input class="" type="text" name="flashcard[response]" value='' id="flashcard_response">
-                <h3 class='fc-translation'><%= flashcard.word.translation %></h3>
+                <p class='fc-word purple-text'><%= flashcard.word.translation %></p>
+                <input class="fc-input input-verso text-center pl-0" type="text" name="flashcard[response]" value='' id="flashcard_response_verso">
+                <h3 class='fc-translation'><%= flashcard.word.word %></h3>
               </div>
 
               <%= simple_form_for flashcard, url: flashcard_mastered_update_path(flashcard) do |f| %>
