@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :flashcards
+  has_many :orders
 
   # validates_inclusion_of :topics, in: Topic::NAMES
   validate :check_topics, on: :update
