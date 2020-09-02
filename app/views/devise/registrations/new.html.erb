@@ -1,7 +1,7 @@
 <div class="container registration">
   <img class="text-center logo-younguage" src="<%= image_url("younguage.png") %>" alt="logo younguage">
   <div class="choose-bar">
-    <%= link_to url_for(new_session_path(resource_name)) do %>
+    <%= link_to new_session_path(resource_name) do %>
       <h3>SIGN IN</h3>
     <% end %>
     <h3 class="active">SIGN UP</h3>
