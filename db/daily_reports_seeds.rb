@@ -1,3 +1,5 @@
+DailyReport.delete_all
+
 days = {
   Monday: 'L',
   Tuesday: 'M',

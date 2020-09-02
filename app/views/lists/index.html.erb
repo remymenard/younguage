@@ -2,9 +2,9 @@
   <div class='full-screen-card rounded-element medium-purple-bg d-flex flex-column justify-content-between p-4'>
 
     <!-- TITLE -->
-    <h1 class='mb-1'>Flashcards</h1>
     <!-- AGENDA -->
     <div>
+      <h1 class='m-0'>Flashcards</h1>
       <div class='agenda'>
         <% @days.each do |report| %>
           <div class='agenda-col <%= 'purple-bg' if @today == report.day %>'>
@@ -47,7 +47,14 @@
 
           <!-- Nombre de cartes restantes -->
           <div class='w-100 d-flex justify-content-center align-items-center'>
-            <p class='m-0'><%= @rdj_cards_left %> cartes</br>restantes</p>
+            <p class='m-0 text-center'>
+              <%= @rdj_cards_left %>
+              <% if @rdj_cards_left > 1 %>
+                cartes</br>restantes
+              <% else %>
+                carte</br>restante
+              <% end %>
+            </p>
           </div>
           <!-- Bouton Go! -->
           <%= link_to list_path(@revision_du_jour) do %>
@@ -93,7 +100,14 @@
 
           <!-- Nombre de cartes restantes -->
           <div class='w-100 d-flex justify-content-center align-items-center'>
-            <p class='m-0'><%= @nm_cards_left %> cartes</br>restantes</p>
+            <p class='m-0 text-center'>
+              <%= @nm_cards_left %>
+              <% if @nm_cards_left > 1 %>
+                cartes</br>restantes
+              <% else %>
+                carte</br>restante
+              <% end %>
+            </p>
           </div>
           <!-- Bouton Go! -->
           <%= link_to list_path(@nouveaux_mots) do %>
