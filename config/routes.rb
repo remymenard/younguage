@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :skip => [:registrations]
+
+  as :user do
+      get    "users/cancel",  to: "users/registrations#cancel",  as: 'cancel_user_registration'
+      get    "users/sign_up", to: "users/registrations#new",     as: 'new_user_registration'
+      get    "users/edit",    to: "users/registrations#edit",    as: 'edit_user_registration'
+      patch  "users",         to: "users/registrations#update",  as: 'user_registration'
+      put    "users",         to: "users/registrations#update"
+      delete "users",         to: "users/registrations#destroy"
+      post   "users",         to: "users/registrations#create"
+  end
+
   root to: 'articles#index'
 
   get 'edit_topics', to: 'topics#edit'
