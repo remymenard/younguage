@@ -3,9 +3,10 @@ class FlashcardsController < ApplicationController
     @flashcard = Flashcard.find(params[:id])
     @flashcard.update(flashcard_params)
     @flashcard.update(last_view: Time.now)
+    raise
 
     # redirect_to @flashcard.list
-    redirect_to list(@flashcard.list)
+    redirect_to list_path(@flashcard.list)
   end
 
   def index
