@@ -41,11 +41,11 @@
           <!-- END OF FLASHCARD -->
         <% end %>
         <div id='congrats' style='display: none;'>
-          <div class='d-flex flex-column justify-content-center align-items-center'>
+          <div class='d-flex flex-column justify-content-center align-items-center h-100'>
             <h3>100%</h3>
             <p>Congratulations !</p>
             <%= link_to list_daily_reports_mark_a_day_as_done_path(@list), method: 'PATCH' do %>
-              <div class='' id='mark-as-finished'>Mark as finished</div>
+              <div class='finished-btn' id='mark-as-finished'>Terminer</div>
             <% end %>
           </div>
         </div>
@@ -56,7 +56,14 @@
 
     <div class='d-flex flex-column justify-content-between align-items-center mb-2'>
       <div class='d-flex flex-row justify-content-between align-items-center w-100 mb-1'>
-        <p class='m-0'><%= @list.flashcards.where(mastered: false).count %> cartes restantes</p>
+        <p class='m-0'>
+          <%= @list.flashcards.where(mastered: false).count %>
+          <% if @list.flashcards.where(mastered: false).count > 1 %>
+            cartes restantes
+          <% else %>
+            carte restante
+          <% end %>
+        </p>
         <p class='m-0'><%= @percentage %>%</p>
       </div>
       <div class="bar" style='background-color: white'>
