@@ -6,8 +6,12 @@
 
     <%= link_to article_path(article), class: 'article-link' do %>
       <div class="article-item"  style = "color: #311D3F">
-        <div>
-          <h3><%= article.title.first(62) %></h3>
+        <div class = "">
+          <% if article.title.size > 62  %>
+            <h3><%= article.title.first(62) %>...</h3>
+          <% else %>
+            <h3><%= article.title.first(62) %></h3>
+          <% end %>
 
         </div>
         <br>
