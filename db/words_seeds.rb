@@ -19,14 +19,14 @@ list = List.new(name: 'All words')
 list.save!
 puts '[3/4] Finished!'
 
-# puts '[4/4] Creating some fake words & flashcards...'
-# filepath = "#{Rails.root}/db/words.csv"
-# CSV.foreach(filepath) do |row|
-#   word = Word.new(word: row[0], translation: row[1], user: User.first)
-#   word.save!
-#   flashcard = Flashcard.new(word: word, list: List.first)
-#   flashcard.save!
-#   print '.'
-# end
-# puts ''
-# puts '[4/4] Finished!'s
+puts '[4/4] Creating some fake words & flashcards...'
+filepath = "#{Rails.root}/db/words.csv"
+CSV.foreach(filepath) do |row|
+  word = Word.new(word: row[0], translation: row[1], user: User.first)
+  word.save!
+  # flashcard = Flashcard.new(word: word, list: List.first)
+  # flashcard.save!
+  print '.'
+end
+puts ''
+puts '[4/4] Finished!'
