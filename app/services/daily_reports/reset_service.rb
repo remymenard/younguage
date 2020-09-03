@@ -10,14 +10,17 @@ module DailyReports
         Saturday: 'S',
         Sunday: 'D'
       }
+      @users = User.all
     end
 
     def call
       DailyReport.delete_all
 
-      @days.each do |day, letter|
-        daily_report = DailyReport.new(day: day, letter: letter)
-        daily_report.save!
+      @users.each do |user|
+        @days.each do |day, letter|
+          daily_report = DailyReport.new(user: user, day: day, letter: letter)
+          daily_report.save!
+        end
       end
     end
   end
