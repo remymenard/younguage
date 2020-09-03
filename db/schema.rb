@@ -125,10 +125,9 @@ ActiveRecord::Schema.define(version: 2020_09_02_221401) do
   add_foreign_key "daily_reports", "users"
   add_foreign_key "flashcards", "lists"
   add_foreign_key "flashcards", "words"
-  add_foreign_key "videos", "topics"
   add_foreign_key "lists", "users"
   add_foreign_key "orders", "subscriptions"
   add_foreign_key "orders", "users"
-
+  add_foreign_key "videos", "topics"
   add_foreign_key "words", "users"
 end
