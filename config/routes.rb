@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   mount StripeEvent::Engine, at: '/stripe-webhooks'
 
   resources :articles, only: [:index, :show]
+  resources :videos, only: [:show]
   resources :words, only: [:create, :index]
   resources :lists, only: [:show, :index] do
     patch 'daily_reports/mark_a_day_as_done', to: 'daily_reports#mark_a_day_as_done'

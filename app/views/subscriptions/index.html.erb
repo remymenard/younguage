@@ -1,17 +1,38 @@
-<div class="container py-3">
-  <div class="row">
-    <div class="col-sm-12 col-md-6">
-    </div>
-    <div class="col-sm-12 col-md-6">
-      <h1><%= @subscription.name %></h1>
-      <p>Amount: <%= humanized_money_with_symbol(@subscription.price) %></p>
+<div class="container padding-10">
+  <div class="full-screen-card rounded-element medium-purple-bg d-flex flex-column pt-4 text-center">
+    <h1>Passe <strong>Premium</strong></h1>
+    <p>Et continue de progresser!</p>
+    <div class='premium-page text-left pt-3 mt-4 '>
+      <h3 class = "text-center pb-2"> <strong>Premium</strong></h3>
+      <div class= "d-flex justify-content-between">
+        <div>
 
-      <div>
-        <%= form_tag orders_path do %>
-          <%= hidden_field_tag 'subscription_id', @subscription.id %>
-          <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
-        <% end %>
+          <p class =" pl-4 pt-2">Des article à l'infini </p>
+          <p class =" pl-4">Du contenu vidéo</p>
+          <p class =" pl-4">Enregistrements illimités </p>
+
+        </div>
+        <div class = 'pr-4'>
+          <p><i class="fas fa-check-circle"></i></p>
+          <p><i class="fas fa-check-circle"></i></p>
+          <p><i class="fas fa-check-circle"></i></p>
+
+        </div>
+
       </div>
+    </div>
+    <div class= "row d-flex text-center pt-4 justify-content-center">
+      <h1 class = "price pr-3 mb-1"> <strong>3€ </strong>  </h1>
+      <p class = "mois pt-4"> / mois</p>
+
+    </div>
+    <div class = 'pt-4'>
+      <%= form_tag orders_path do %>
+        <%= hidden_field_tag 'subscription_id', @subscription.id %>
+        <%= submit_tag 'Je passe premium', class: 'btn premium btn-lg' %>
+      <% end %>
+
     </div>
   </div>
 </div>
+

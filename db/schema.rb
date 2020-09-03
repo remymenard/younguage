@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_02_181114) do
+ActiveRecord::Schema.define(version: 2020_09_02_221401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,17 @@ ActiveRecord::Schema.define(version: 2020_09_02_181114) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "videos", force: :cascade do |t|
+    t.string "url"
+    t.string "title"
+    t.text "subtitles"
+    t.string "author"
+    t.bigint "topic_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["topic_id"], name: "index_videos_on_topic_id"
+  end
+
   create_table "words", force: :cascade do |t|
     t.string "word"
     t.string "translation"
@@ -114,7 +125,9 @@ ActiveRecord::Schema.define(version: 2020_09_02_181114) do
   add_foreign_key "daily_reports", "users"
   add_foreign_key "flashcards", "lists"
   add_foreign_key "flashcards", "words"
-
   add_foreign_key "lists", "users"
+  add_foreign_key "orders", "subscriptions"
+  add_foreign_key "orders", "users"
+  add_foreign_key "videos", "topics"
   add_foreign_key "words", "users"
 end

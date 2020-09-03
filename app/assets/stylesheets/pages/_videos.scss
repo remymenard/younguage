@@ -1,0 +1,28 @@
+.youtube-marker:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#player {
+  width: 100vw;
+  height: 50vh;
+}
+
+.youtube-marker-current {
+  background: $purple;
+  color: white;
+}
+
+.bar-videos {
+  width: 100%;
+  height: 50px;
+  background-color: #FBFCFC;
+  top:0;
+  z-index: 100;
+
+}
+
+#translations-box {
+  overflow: scroll;
+  max-height: 250px;
+}
