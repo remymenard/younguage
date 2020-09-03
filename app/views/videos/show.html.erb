@@ -1,0 +1,20 @@
+<div id = "myBtn" class= 'bar-videos'>
+  <div class="d-flex" style = "color: #888888">
+    <%= link_to articles_path, class: 'btn mt-2', style: 'color: #888888'  do %>
+      <i class="fas fa-chevron-left"></i>
+    <% end %>
+    <div class= "d-flex mt-3">
+      <p>titre de la vidéo</p>
+      <p> ...</p>
+    </div>
+  </div>
+</div>
+<!--<div id="player"></div>-->
+<iframe id="player" src="https://www.youtube.com/embed/5MgBikgcWnY?autoplay=1&enablejsapi=1" frameborder="0"></iframe>
+<div class="container">
+  <div id="translations-box">
+    <%= render 'shared/subtitles' %>
+  </div>
+</div>
+<%= render 'shared/translations' %>
+<%= javascript_pack_tag 'transcriptSubtitles' %>

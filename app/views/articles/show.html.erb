@@ -8,7 +8,6 @@
         <p><%= @article.title.first(35) %></p> <p> ...</p>
       </div>
     </div>
-
   </div>
   <div class="banner-article banner-container" style="background-image: linear-gradient(rgba(49, 29, 63, 0.6),rgba(49, 29, 63, 0.6)), url(https://source.unsplash.com/375x262/?<%= @article.topic.name %>););">
     <div class='h-100 d-flex align-items-center'>
@@ -19,6 +18,10 @@
     </div>
     <div class='media-logo'></div>
   </div>
+
+  <!-- TRADUCTION D'UN MOT -->
+  <%= render 'shared/translations' %>
+
   <div class="container padding-20">
     <div id="content">
       <%= sanitize @article.content %>
@@ -52,7 +55,6 @@
   </div>
 
   <!-- render -->
-
 </div>
 <%= javascript_pack_tag 'translateWords' %>
 <%= javascript_pack_tag 'banner' %>

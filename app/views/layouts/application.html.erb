@@ -50,10 +50,10 @@
   </head>
 
 
-  <body <% unless action_name == "show" && controller_name == "articles" %> id="body" <% end %>>
+  <body <% unless action_name == "show" && (controller_name == "articles" || controller_name == "videos") %> id="body" <% end %>>
     <%= render 'shared/flashes' %>
     <%= yield %>
-    <% unless (action_name == "show" && controller_name == "articles") || (!user_signed_in?) %>
+    <% unless (action_name == "show" && (controller_name == "articles" || controller_name == "videos")) || (!user_signed_in?) %>
       <%= render 'shared/navbar' %>
     <% end %>
   </body>
