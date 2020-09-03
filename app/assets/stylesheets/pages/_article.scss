@@ -13,7 +13,7 @@
 }
 
 .banner-article {
-  background-color: #311D3F;
+  background-position: center;
   height: 262px;
   display: flex;
   justify-content: space-between;
@@ -92,18 +92,19 @@
   margin: 2% auto; /* Will not center vertically and won't work in IE6/7. */
   left: 0;
   right: 0;
-  padding: 0 10px;
   color: white;
 
   #cross {
     height: 60px;
-    max-width: 60px;
+    width: 60px;
     border-radius: 30px;
+    margin: 10px;
     background-color: $dark-purple;
-    text-align: center;
     color: white;
-    line-height: 60px;
     font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   #cloud {
     height: 80px;
@@ -120,7 +121,6 @@
   }
 
   #words {
-    padding-left: 60px;
     font-family: 'Open Sans', 'sans-serif';
   }
 

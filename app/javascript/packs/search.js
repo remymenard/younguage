@@ -1,19 +1,26 @@
 // document.addEventListener('turbolinks:load', () => displayWords());
 
 
-const results = document.querySelectorAll('.translation');
-const wordArray = Array.prototype.slice.call(results);
+
+// const wordArray = Array.prototype.slice.call(translations);
 const input = document.querySelector('#query');
 const words = document.querySelectorAll('.all-words')
 
 
 const autocomplete = (e) => {
 
-  results.forEach((result, index) => {
+  const translations = document.querySelectorAll('.translation');
+  const unstranslated = document.querySelectorAll('.word');
+  unstranslated.forEach((result, index) => {
     words[index].classList.remove("hidden");
-    if (!result.innerText.startsWith(input.value)){
-      words[index].classList.add("hidden");
+    console.log(translations[index].innerText.trim());
+    if(input.value != "") {
+
+      if (!result.innerText.startsWith(input.value)){
+        words[index].classList.add("hidden");
+      }
     }
+
   });
 }
 

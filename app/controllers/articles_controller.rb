@@ -6,6 +6,7 @@ class ArticlesController < ApplicationController
       topic = Topic.find_by name: topic
       Article.where(topic_id: topic.id).each { |article| @articles << article }
     end
+    redirect_to edit_topics_path if @articles.empty?
     @articles.shuffle!
   end
 

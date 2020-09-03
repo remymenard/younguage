@@ -1,0 +1,45 @@
+.registration {
+  input {
+    border-radius: 30px;
+  }
+
+  #password-reset {
+    color: $purple;
+  }
+
+  small {
+    color: white !important;
+  }
+
+  label {
+    color: $dark-purple;
+    font-family: $body-font;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 29px;
+  }
+
+  a {
+    color: white;
+  }
+
+  .choose-bar {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin: 29px 79px 25px 79px;
+
+    h3 {
+      color: white;
+      font-weight: bold;
+      font-size: 19px;
+      line-height: 26px;
+    }
+
+    .active {
+      color: $purple;
+      border-bottom: 2px solid $purple;
+    }
+  }
+}

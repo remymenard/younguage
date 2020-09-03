@@ -4,5 +4,5 @@ class Word < ApplicationRecord
 
   validates :word,        presence: true, allow_blank: false
   validates :translation, presence: true, allow_blank: false
-  validates :user, presence: true
+  validates :user,        presence: true
 end

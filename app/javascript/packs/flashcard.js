@@ -4,12 +4,12 @@ const submitButtonSwitchFlashcard = () => {
       event.preventDefault();
 
       const flashcardResponse = document.getElementById('flashcard_response_recto').value;
-      console.log(flashcardResponse);
+      // console.log(flashcardResponse);
 
       document.querySelectorAll('#flashcard_response_verso').forEach((input) => {
-        console.log(input.value);
+        // console.log(input.value);
         input.value = flashcardResponse;
-        console.log(input.value);
+        // console.log(input.value);
       });
 
       event.srcElement.parentElement.parentElement.parentElement.children[0].style.display = 'none';
