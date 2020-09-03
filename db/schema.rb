@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 2020_09_02_181114) do
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
-=======
   create_table "orders", force: :cascade do |t|
     t.string "state"
     t.string "subscription_sku"
@@ -115,7 +114,8 @@ ActiveRecord::Schema.define(version: 2020_09_02_181114) do
   add_foreign_key "daily_reports", "users"
   add_foreign_key "flashcards", "lists"
   add_foreign_key "flashcards", "words"
-
   add_foreign_key "lists", "users"
+  add_foreign_key "orders", "subscriptions"
+  add_foreign_key "orders", "users"
   add_foreign_key "words", "users"
 end
