@@ -1,5 +1,7 @@
 const YouTubeIframeLoader = require('youtube-iframe');
 let player;
+let markers = []
+let $container = $('#translations-box');
 
 function loadPlayer() {
   YouTubeIframeLoader.load(function(YT) {
@@ -23,7 +25,7 @@ function onPlayerStateChange(event) {
   }
 }
 
-var MarkersInit = function(markers) {
+var MarkersInit = function() {
   var elements = document.querySelectorAll('.youtube-marker');
   Array.prototype.forEach.call(elements, function(el, i) {
     var time_start = el.dataset.start;
@@ -46,7 +48,6 @@ var MarkersInit = function(markers) {
 }
 
 // On Ready
-var markers = [];
 
 document.onreadystatechange = () => {
   if (document.readyState === 'complete') {
@@ -72,12 +73,15 @@ function UpdateMarkers() {
 
     if (current_time >= marker.time_start && current_time <= marker.time_end) {
       marker.dom.classList.add("youtube-marker-current");
-      var $container = $('#translations-box');
-      var $scrollTo = $('.youtube-marker-current');
-
-    $container.scrollTop(
+      let $scrollTo = $('.youtube-marker-current');
+      try {
+        $container.scrollTop(
         $scrollTo.offset().top - $container.offset().top + $container.scrollTop()
-    );
+        );
+      } catch (error) {
+        return;
+      }
+
 
     } else {
       marker.dom.classList.remove("youtube-marker-current");
@@ -198,12 +202,13 @@ $("#cross").click(function (e) {
   close();
 })
 }
+function loadAll() {
+  if (document.body.contains(document.getElementById('player'))) {
+    loadPlayer();
+    addSpaces();
+    translateWords();
+    activateButton();
+  }
+}
 
-loadPlayer();
-addSpaces();
-translateWords();
-activateButton();
-$(window).bind('beforeunload', function(){
-  exit();
-});
-// document.addEventListener('turbolinks:load', activateButton);
+loadAll();
