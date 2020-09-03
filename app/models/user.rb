@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :orders
   has_many :daily_reports
   has_many :lists
+  has_many :words
 
 
   # validates_inclusion_of :topics, in: Topic::NAMES

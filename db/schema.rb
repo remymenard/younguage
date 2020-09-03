@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 2020_09_02_181114) do
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
-=======
   create_table "orders", force: :cascade do |t|
     t.string "state"
     t.string "subscription_sku"
