@@ -21,6 +21,10 @@
   }
 }
 
+.no-underline:hover {
+  text-decoration: none;
+}
+
 .premium-btn {
   background-color: #2CF6B3;
   padding: 5px 20px;
@@ -35,8 +39,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none !important;
+  outline: none;
 
   &:hover {
+    text-decoration: none !important;
+    outline: none;
     background-color: white;
     color: #2CF6B3;
     // transform: scale(1.02);

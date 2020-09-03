@@ -59,7 +59,9 @@
     <div class='premium-articles-pub'>
       <h4>Pour plus d'articles...</h4>
       <h3>Passe <strong>PREMIUM</strong></h3>
-      <div class='premium-btn'>Détails de l'offre</div>
+      <%= link_to subscriptions_path, class: 'no-underline' do %>
+        <div class='premium-btn'>Détails de l'offre</div>
+      <% end %>
     </div>
   <% end %>
 
