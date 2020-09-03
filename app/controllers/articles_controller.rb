@@ -16,6 +16,7 @@ class ArticlesController < ApplicationController
       @articles = articles_brut
       @premium_articles = []
     end
+    @video = Video.first
   end
 
   def show

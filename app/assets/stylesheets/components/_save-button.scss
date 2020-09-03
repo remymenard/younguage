@@ -1,3 +1,13 @@
+.slide-up
+{
+    bottom: 0px !important;
+}
+
+.slide-down
+{
+    bottom: -475px !important;
+}
+
 $size: 80px;
 
 @-webkit-keyframes bounceIn {

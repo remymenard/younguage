@@ -155,6 +155,15 @@ const translateWords = () => {
 
 }
 
+const close = () => {
+  resetState();
+  $("#translation").hide();
+  player.playVideo();
+}
+
+const startAutoClose = () => {
+  setTimeout(function() { close(); }, 3000);
+}
 
 const activateButton = () => {
   $("#cloud").click(function(e) {
@@ -174,6 +183,7 @@ const activateButton = () => {
               translated.style.color = "rgb(101,255,144)";
               translated.innerHTML = "enregistrée"
               isAddedToFlashCards = true;
+              startAutoClose();
               // $("#translation").hide();
           },
           error: function() {
@@ -185,9 +195,7 @@ const activateButton = () => {
 
 $("#cross").click(function (e) {
   e.preventDefault();
-  resetState();
-  $("#translation").hide();
-  player.playVideo();
+  close();
 })
 }
 
@@ -196,6 +204,6 @@ addSpaces();
 translateWords();
 activateButton();
 $(window).bind('beforeunload', function(){
-  throw new Error('This is not an error. This is just to abort javascript');
+  exit();
 });
 // document.addEventListener('turbolinks:load', activateButton);
