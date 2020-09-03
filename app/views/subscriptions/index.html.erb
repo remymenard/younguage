@@ -1,38 +1,41 @@
 <div class="container padding-10">
-  <div class="full-screen-card rounded-element medium-purple-bg d-flex flex-column pt-4 text-center">
-    <h1>Passe <strong>Premium</strong></h1>
-    <p>Et continue de progresser!</p>
-    <div class='premium-page text-left pt-3 mt-4 '>
-      <h3 class = "text-center pb-2"> <strong>Premium</strong></h3>
-      <div class= "d-flex justify-content-between">
-        <div>
+  <div class="full-screen-card rounded-element medium-purple-bg d-flex flex-column justify-content-between align-items-center">
 
-          <p class =" pl-4 pt-2">Des article à l'infini </p>
-          <p class =" pl-4">Du contenu vidéo</p>
-          <p class =" pl-4">Enregistrements illimités </p>
+    <div class='premium-title padding-35'>
+      <h1>Passe <strong>PREMIUM</strong></h1>
+      <h3>Et continue de progresser!</h3>
+    </div>
 
+    <div class='premium-page d-flex justify-content-center align-items-center'>
+      <div class='w-100'>
+        <h3 class = "text-center pb-2"> <strong>Premium</strong></h3>
+        <div dlass= "d-flex justify-content-between">
+          <div class='d-flex flex-row justify-content-between align-items-center premium-list'>
+            <h3>Des article à l'infini </h3>
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <div class='d-flex flex-row justify-content-between align-items-center premium-list'>
+            <h3>Du contenu vidéo</h3>
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <div class='d-flex flex-row justify-content-between align-items-center premium-list'>
+            <h3>Enregistrements illimités </h3>
+            <i class="fas fa-check-circle"></i>
+          </div>
         </div>
-        <div class = 'pr-4'>
-          <p><i class="fas fa-check-circle"></i></p>
-          <p><i class="fas fa-check-circle"></i></p>
-          <p><i class="fas fa-check-circle"></i></p>
-
-        </div>
-
       </div>
     </div>
-    <div class= "row d-flex text-center pt-4 justify-content-center">
-      <h1 class = "price pr-3 mb-1"> <strong>3€ </strong>  </h1>
-      <p class = "mois pt-4"> / mois</p>
 
+    <div class='w-100 padding-35'>
+      <h3 class = "price"><strong>3€</strong> / mois</h3>
+      <div class='mt-3'>
+        <%= form_tag orders_path do %>
+          <%= hidden_field_tag 'subscription_id', @subscription.id %>
+          <%= submit_tag 'Je passe premium', class: 'premium-btn no-border' %>
+        <% end %>
+      </div>
     </div>
-    <div class = 'pt-4'>
-      <%= form_tag orders_path do %>
-        <%= hidden_field_tag 'subscription_id', @subscription.id %>
-        <%= submit_tag 'Je passe premium', class: 'btn premium btn-lg' %>
-      <% end %>
 
-    </div>
   </div>
 </div>
 
