@@ -6650,6 +6650,11 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
+slide-anim@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/slide-anim/-/slide-anim-1.3.2.tgz#27ef298b2a98480377bf862431cf07fa44639818"
+  integrity sha512-GYMXgbMXTm+VycfUo1Ibb1+eNLRB2oFzmubnZqWR+zwyGw05St3XT9gKEiILOveULF6qa9nw+X4jOBvNJ51y3Q==
+
 snapdragon-node@^2.0.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/snapdragon-node/-/snapdragon-node-2.1.1.tgz#6c175f86ff14bdb0724563e8f3c1b021a286853b"
