@@ -16,6 +16,13 @@ Rails.application.routes.draw do
   get 'edit_topics', to: 'topics#edit'
   post 'edit_topics', to: 'topics#post'
 
+  # STRIPE
+  resources :subscriptions, only: :index
+  resources :orders, only: [:show, :create] do
+    resources :payments, only: :new
+  end
+  mount StripeEvent::Engine, at: '/stripe-webhooks'
+
   resources :articles, only: [:index, :show]
   resources :words, only: [:create, :index]
   resources :lists, only: [:show, :index] do

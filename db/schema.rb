@@ -79,6 +79,27 @@ ActiveRecord::Schema.define(version: 2020_09_02_181114) do
     t.string "sku"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "state"
+    t.string "subscription_sku"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "checkout_session_id"
+    t.bigint "user_id", null: false
+    t.bigint "subscription_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["subscription_id"], name: "index_orders_on_subscription_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "price_cents", default: 0, null: false
+    t.string "name"
+    t.string "sku"
+  end
+
   create_table "topics", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -114,6 +135,7 @@ ActiveRecord::Schema.define(version: 2020_09_02_181114) do
   add_foreign_key "daily_reports", "users"
   add_foreign_key "flashcards", "lists"
   add_foreign_key "flashcards", "words"
+
   add_foreign_key "lists", "users"
   add_foreign_key "orders", "subscriptions"
   add_foreign_key "orders", "users"
