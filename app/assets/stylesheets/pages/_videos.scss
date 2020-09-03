@@ -1,8 +1,28 @@
-.wrapper {
-  width: 500px;
-  max-width: 100%;
+.youtube-marker:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
-p {
-  width: 600px;
-  max-width: 100%;
+
+#player {
+  width: 100vw;
+  height: 50vh;
+}
+
+.youtube-marker-current {
+  background: $purple;
+  color: white;
+}
+
+.bar-videos {
+  width: 100%;
+  height: 50px;
+  background-color: #FBFCFC;
+  top:0;
+  z-index: 100;
+
+}
+
+#translations-box {
+  overflow: scroll;
+  max-height: 250px;
 }
