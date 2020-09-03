@@ -6,11 +6,15 @@ let $container = $('#translations-box');
 function loadPlayer() {
   YouTubeIframeLoader.load(function(YT) {
     player = new YT.Player('player', {
-      autoplay: '1',
+      autoplay: 1,
       events: {
         'onStateChange': onPlayerStateChange
       }
     });
+  setTimeout(function() {
+    player.mute();
+    player.playVideo(); }, 1000);
+
   });
 }
 
@@ -36,7 +40,7 @@ var MarkersInit = function() {
     } else {
       id = 0;
     }
-    marker = {};
+    let marker = {};
     marker.time_start = time_start;
     marker.time_end = time_end;
     marker.dom = el;
@@ -103,6 +107,19 @@ const resetState = () => {
   isAddedToFlashCards = false;
 }
 
+const highlight = () => {
+  $( ".highlight" ).removeClass();
+  document.querySelectorAll('.highlight').forEach(el => {
+    el.innerText = " " + el.innerText + " "
+  })
+  const selection = window.getSelection();
+  if (!selection.isCollapsed) {
+          const range = selection.getRangeAt(0);
+          const removeHighlights = highlightRange(range, 'span', { class: 'highlight' });
+          // Running removeHighlights() would remove the highlight again.
+  }
+}
+
 const translation = (word) => {
 
 untranslated = document.getElementById("untranslated");
@@ -129,6 +146,7 @@ const addSpaces = () => {
   });
 }
 
+import highlightRange from 'dom-highlight-range';
 const translateWords = () => {
   // addSpaces();
   try {
@@ -148,6 +166,7 @@ const translateWords = () => {
         range.setEnd(node, range.endOffset + 1);
     } while (range.toString().indexOf(' ') == -1 && range.toString().trim() != '' && range.endOffset < range.endContainer.length);
 
+    highlight();
     var str = range.toString().trim();
     // alert(str);
     str = str.replace(/\.|!|\?|,|\(|\)|:/g, '')
@@ -166,7 +185,7 @@ const close = () => {
 }
 
 const startAutoClose = () => {
-  setTimeout(function() { close(); }, 3000);
+  setTimeout(function() { close(); }, 1000);
 }
 
 const activateButton = () => {

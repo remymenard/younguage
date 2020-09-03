@@ -798,6 +798,14 @@
     "@babel/types" "^7.4.4"
     esutils "^2.0.2"
 
+"@babel/runtime-corejs3@^7.7.2":
+  version "7.11.2"
+  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.11.2.tgz#02c3029743150188edeb66541195f54600278419"
+  integrity sha512-qh5IR+8VgFz83VBa6OkaET6uN/mJOhHONuy3m1sgF0CV6mXdPSEBdA7e1eUbVvyNtANjMbg22JUv71BaDXLY6A==
+  dependencies:
+    core-js-pure "^3.0.0"
+    regenerator-runtime "^0.13.4"
+
 "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4":
   version "7.11.2"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.11.2.tgz#f549c13c754cc40b87644b9fa9f09a6a95fe0736"
@@ -842,6 +850,23 @@
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
+
+"@h74-types/general@^1.0.4":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@h74-types/general/-/general-1.0.6.tgz#ac2e722bfa7f8d2535a7f2c8a15971603e872c53"
+  integrity sha512-oW3YUUOX/CsB6dAH/m5hIz+36szlG1xCcgY7T42cXkxD1geF32/T7IGHzuKVZeGC6ylZ9cut5VhjoOSZcygnrg==
+  dependencies:
+    "@types/node" "*"
+
+"@hooked74/highlight@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@hooked74/highlight/-/highlight-1.0.3.tgz#791d64e42c702fb45402efacce0d9d612081d688"
+  integrity sha512-ObgzO58GePp9Zf/pfIFCXAd78FBV0xe0JWXwO2vqPym0NkVHcq6bprmnnMmDJvKRmwtI5rLqnQyXact5odPtcA==
+  dependencies:
+    "@babel/runtime-corejs3" "^7.7.2"
+    "@h74-types/general" "^1.0.4"
+    "@types/lodash" "^4.14.146"
+    lodash "^4.17.15"
 
 "@npmcli/move-file@^1.0.1":
   version "1.0.1"
@@ -923,6 +948,11 @@
   version "7.0.5"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.5.tgz#dcce4430e64b443ba8945f0290fb564ad5bac6dd"
   integrity sha512-7+2BITlgjgDhH0vvwZU/HZJVyk+2XUlvxXe8dFMedNX/aMkaOq++rMAFXc0tM7ij15QaWlbdQASBR9dihi+bDQ==
+
+"@types/lodash@^4.14.146":
+  version "4.14.161"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.161.tgz#a21ca0777dabc6e4f44f3d07f37b765f54188b18"
+  integrity sha512-EP6O3Jkr7bXvZZSZYlsgt5DIjiGr0dXP1/jVEwVLTFgg0d+3lWVQkRavYVQszV7dYUwvg0B8R0MBDpcmXg7XIA==
 
 "@types/minimatch@*":
   version "3.0.3"
@@ -2138,6 +2168,11 @@ core-js-compat@^3.6.2:
   dependencies:
     browserslist "^4.8.5"
     semver "7.0.0"
+
+core-js-pure@^3.0.0:
+  version "3.6.5"
+  resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.6.5.tgz#c79e75f5e38dbc85a662d91eea52b8256d53b813"
+  integrity sha512-lacdXOimsiD0QyNf9BC/mxivNJ/ybBGJXQFKzRekp1WTHoVUWsUHEn+2T8GJAzzIhyOuXA+gOxCVN3l+5PLPUA==
 
 core-js@^3.4.0:
   version "3.6.5"

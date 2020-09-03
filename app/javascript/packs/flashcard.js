@@ -1,21 +1,17 @@
 const submitButtonSwitchFlashcard = () => {
-  document.querySelectorAll('.fc-submit-btn').forEach((submit_btn) => {
-    submit_btn.addEventListener('click', (event) => {
-      event.preventDefault();
+  $('.fc-submit-btn').click(function () {
+    //Some code
+    const flashcardResponse = $('flashcard_response_recto').val();
+    // console.log(flashcardResponse);
 
-      const flashcardResponse = document.getElementById('flashcard_response_recto').value;
-      // console.log(flashcardResponse);
-
-      document.querySelectorAll('#flashcard_response_verso').forEach((input) => {
-        // console.log(input.value);
-        input.value = flashcardResponse;
-        // console.log(input.value);
-      });
-
-      event.srcElement.parentElement.parentElement.parentElement.children[0].style.display = 'none';
-      event.srcElement.parentElement.parentElement.parentElement.children[1].style.display = 'block';
-
+    document.querySelectorAll('#flashcard_response_verso').forEach((input) => {
+      // console.log(input.value);
+      input.value = flashcardResponse;
+      // console.log(input.value);
     });
+
+    event.srcElement.parentElement.parentElement.parentElement.children[0].style.display = 'none';
+    event.srcElement.parentElement.parentElement.parentElement.children[1].style.display = 'block';
   });
 }
 
@@ -46,7 +42,8 @@ const displayFlashcards = () => {
 }
 
 
-
-displayFlashcards()
-submitButtonSwitchFlashcard()
-masteredSubmit()
+document.addEventListener('DOMContentLoaded', () => {
+  displayFlashcards()
+  submitButtonSwitchFlashcard()
+  masteredSubmit()
+})
