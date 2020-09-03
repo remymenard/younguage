@@ -55,11 +55,13 @@
 
   <!-- PREMIUM PUB -->
 
-  <div class='premium-articles-pub'>
-    <h4>Pour plus d'articles...</h4>
-    <h3>Passe <strong>PREMIUM</strong></h3>
-    <div class='premium-btn'>Détails de l'offre</div>
-  </div>
+  <% if @user.orders.where(state: 'paid').empty? %>
+    <div class='premium-articles-pub'>
+      <h4>Pour plus d'articles...</h4>
+      <h3>Passe <strong>PREMIUM</strong></h3>
+      <div class='premium-btn'>Détails de l'offre</div>
+    </div>
+  <% end %>
 
   <!-- ARTICLES PREMIUM -->
   <% @premium_articles.each do |article| %>
