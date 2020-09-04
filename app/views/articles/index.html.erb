@@ -4,6 +4,27 @@
     <br><br>
 
 
+<% if @user.orders.where(state: 'paid').empty? %>
+   <!-- La vidéo youtube -->
+   <%= link_to videos_path, class: 'article-link' do %>
+      <div class="article-item"  style = "color: #311D3F">
+            <h3>How to learn anything fast?</h3>
+        <br>
+        <div class= "d-flex flex-row justify-content-between align-items-center">
+          <div class='d-flex justify-content-start align-items-center'>
+              <img class="media-logo-medium" src="https://pi.tedcdn.com/r/www.filepicker.io/api/file/jFAo2LPIQm6E1X6yQaVq?quality=90&w=260" alt="">
+            <div class='article-infos ml-3 d-flex flex-column align-items-start'>
+              <div class='article-date'>2 décembre 2019</div>
+              <div class='article-media'>Josh Kaufman</div>
+            </div>
+          </div>
+
+          <div class="sticker sciences">sciences</div>
+        </div>
+
+      </div>
+    <% end %>
+    <% end %>
   <!-- ARTICLES DISPONIBLES -->
   <% @articles.each do |article| %>
 
@@ -34,25 +55,6 @@
     <% end %>
   <% end %>
 
-   <!-- La vidéo youtube -->
-   <%= link_to videos_path, class: 'article-link' do %>
-      <div class="article-item"  style = "color: #311D3F">
-            <h3>How to learn anything fast?</h3>
-        <br>
-        <div class= "d-flex flex-row justify-content-between align-items-center">
-          <div class='d-flex justify-content-start align-items-center'>
-              <img class="media-logo-medium" src="https://pi.tedcdn.com/r/www.filepicker.io/api/file/jFAo2LPIQm6E1X6yQaVq?quality=90&w=260" alt="">
-            <div class='article-infos ml-3 d-flex flex-column align-items-start'>
-              <div class='article-date'>2 décembre 2019</div>
-              <div class='article-media'>Josh Kaufman</div>
-            </div>
-          </div>
-
-          <div class="sticker sciences">sciences</div>
-        </div>
-
-      </div>
-    <% end %>
   <!-- PREMIUM PUB -->
 
   <% if @user.orders.where(state: 'paid').empty? %>
