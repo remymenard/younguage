@@ -25,5 +25,6 @@ class ArticlesController < ApplicationController
     @articles = Article.all
     @article = Article.find(params[:id])
     @subscription = Subscription.first
+    @user = current_user
   end
 end
