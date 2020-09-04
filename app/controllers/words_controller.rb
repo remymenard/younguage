@@ -12,7 +12,8 @@ class WordsController < ApplicationController
     premium_restriction = user.orders.where(state: 'paid').empty? && user.words.length >= 10
     @word = Word.create(user: user, word: word, translation: translation) unless premium_restriction
 
-    return "" if premium_restriction
+    return render json: {"saved": false} if premium_restriction
+    render json: {"saved": true}
 
     # Flashcard.create!(word: @word, list: List.last)
   end

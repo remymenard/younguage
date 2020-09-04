@@ -120,7 +120,6 @@
   word-break: break-word;
   background-color: white;
   color: #311d3f;
-
   p {
     font-weight: 300;
     font-size: 16px;
@@ -141,6 +140,10 @@
     padding: 0 0 0 30px;
   }
 
+  code {
+    display: inline-block;
+    width: 3px;
+  }
   img {
     max-width: 100%;
     border-radius: 5px;
