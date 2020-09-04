@@ -1,3 +1,11 @@
+import Highlighter from 'web-highlighter';
+const highlighter = new Highlighter({
+  style: {
+    className: 'highlight'
+}
+});
+
+
 const YouTubeIframeLoader = require('youtube-iframe');
 let player;
 let markers = []
@@ -6,7 +14,6 @@ let $container = $('#translations-box');
 function loadPlayer() {
   YouTubeIframeLoader.load(function(YT) {
     player = new YT.Player('player', {
-      autoplay: 1,
       events: {
         'onStateChange': onPlayerStateChange
       }
@@ -107,18 +114,6 @@ const resetState = () => {
   isAddedToFlashCards = false;
 }
 
-const highlight = () => {
-  $( ".highlight" ).removeClass();
-  document.querySelectorAll('.highlight').forEach(el => {
-    el.innerText = " " + el.innerText + " "
-  })
-  const selection = window.getSelection();
-  if (!selection.isCollapsed) {
-          const range = selection.getRangeAt(0);
-          const removeHighlights = highlightRange(range, 'span', { class: 'highlight' });
-          // Running removeHighlights() would remove the highlight again.
-  }
-}
 
 const translation = (word) => {
 
@@ -135,6 +130,8 @@ googleTranslate(word, sourceLanguage, targetLanguage)
     untranslated.innerText = word
     translated.innerText = response
   $("#translation").show();
+}).catch(function () {
+  alert("Google Traduction n'est pas accessible actuellement.")
 });
 }
 
@@ -146,7 +143,6 @@ const addSpaces = () => {
   });
 }
 
-import highlightRange from 'dom-highlight-range';
 const translateWords = () => {
   // addSpaces();
   try {
@@ -165,11 +161,13 @@ const translateWords = () => {
     do {
         range.setEnd(node, range.endOffset + 1);
     } while (range.toString().indexOf(' ') == -1 && range.toString().trim() != '' && range.endOffset < range.endContainer.length);
-
-    highlight();
+    // highlight();
     var str = range.toString().trim();
     // alert(str);
     str = str.replace(/\.|!|\?|,|\(|\)|:/g, '')
+
+    highlighter.removeAll()
+    highlighter.fromRange(range)
     translation(str)
 });
   } catch (error) {

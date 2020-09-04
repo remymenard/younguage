@@ -1,24 +1,29 @@
 const submitButtonSwitchFlashcard = () => {
-  $('.fc-submit-btn').click(function () {
-    //Some code
-    const flashcardResponse = $('flashcard_response_recto').val();
-    // console.log(flashcardResponse);
+  document.querySelectorAll('.fc-submit-btn').forEach((submit_btn) => {
+    submit_btn.addEventListener('click', (event) => {
+      event.preventDefault();
 
-    document.querySelectorAll('#flashcard_response_verso').forEach((input) => {
-      // console.log(input.value);
-      input.value = flashcardResponse;
-      // console.log(input.value);
+      const flashcardResponse = document.getElementById('flashcard_response_recto').value;
+      // console.log(flashcardResponse);
+
+      document.querySelectorAll('#flashcard_response_verso').forEach((input) => {
+        // console.log(input.value);
+        input.value = flashcardResponse;
+        // console.log(input.value);
+      });
+
+      event.srcElement.parentElement.parentElement.parentElement.children[0].style.display = 'none';
+      event.srcElement.parentElement.parentElement.parentElement.children[1].style.display = 'block';
+
     });
-
-    event.srcElement.parentElement.parentElement.parentElement.children[0].style.display = 'none';
-    event.srcElement.parentElement.parentElement.parentElement.children[1].style.display = 'block';
   });
 }
 
 const masteredSubmit = () => {
-  document.querySelectorAll('.mastered-submit').forEach((btn) => {
-    btn.addEventListener('click', (event) => {
-      event.srcElement.parentElement.parentElement.parentElement[2].value = 'true';
+  document.querySelectorAll('.mastered-submit').forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      $('input#flashcard_mastered.form-control.hidden').val('true')
+      // event.srcElement.parentElement.parentElement.parentElement[2].value = 'true';
     });
   });
 }
@@ -42,8 +47,7 @@ const displayFlashcards = () => {
 }
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  displayFlashcards()
-  submitButtonSwitchFlashcard()
-  masteredSubmit()
-})
+
+displayFlashcards()
+submitButtonSwitchFlashcard()
+masteredSubmit()

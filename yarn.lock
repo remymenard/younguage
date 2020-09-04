@@ -4899,6 +4899,11 @@ normalize-url@^3.0.0:
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-3.3.0.tgz#b2e1c4dc4f7c6d57743df733a4f5978d18650559"
   integrity sha512-U+JJi7duF1o+u2pynbp2zXDW2/PADgC30f0GsHZtRh+HOcXHnw137TrNlyxxRvWW5fjKd3bcLHPxofWuCjaeZg==
 
+not-overlap-web-highlighter@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/not-overlap-web-highlighter/-/not-overlap-web-highlighter-1.0.5.tgz#8f7abc1d2732b3322269361e70fbe6a511f051a6"
+  integrity sha512-O5GHmeT5w/4Amj+2ECZSr/UjOylisJ8WopWlXgpUr9I/CyqOhZFtruV9tgPL3escDzz7Ke94rq7aw9mn/8tRWA==
+
 npm-run-path@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-2.0.2.tgz#35a9232dfa35d7067b4cb2ddf2357b1871536c5f"
@@ -7532,6 +7537,11 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   integrity sha512-O84QOnr0icsbFGLS0O3bI5FswxzRr8/gHwWkDlQFskhSPryQXvrTMxjxGP4+iWYoauLoBvfDpkrOauZ+0iZpDA==
   dependencies:
     minimalistic-assert "^1.0.0"
+
+web-highlighter@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/web-highlighter/-/web-highlighter-0.7.0.tgz#421e73afdca37f012e15021fe973ca581cfd5b15"
+  integrity sha512-Ryp4L2agIwWH0/8h7ZMoHGL5Q8RcCAp+WPSaSr3IZKQnJywQKaP3ftZz8kZkp8xwrLLSBUe+m94qB6GQBqwCAg==
 
 webpack-assets-manifest@^3.1.1:
   version "3.1.1"
