@@ -198,13 +198,17 @@ const activateButton = () => {
             word: untranslated.innerText,
             translation: translated.innerText
           },
-          success: function() {
-            $(".icon-container").removeClass("not-saved").addClass("saved");
-              untranslated.innerText = "Traduction"
-              translated.style.color = "rgb(101,255,144)";
-              translated.innerHTML = "enregistrée"
-              isAddedToFlashCards = true;
-              startAutoClose();
+          success: function(text) {
+            if (text.saved) {
+              $(".icon-container").removeClass("not-saved").addClass("saved");
+                untranslated.innerText = "Traduction"
+                translated.style.color = "rgb(101,255,144)";
+                translated.innerHTML = "enregistrée"
+                isAddedToFlashCards = true;
+                startAutoClose();
+            } else {
+              $('#premium-pop-up').show();
+            }
               // $("#translation").hide();
           },
           error: function() {
@@ -216,6 +220,13 @@ const activateButton = () => {
 
 $("#cross").click(function (e) {
   e.preventDefault();
+  close();
+})
+
+$(".plus-tard").click(function (e) {
+  e.preventDefault();
+  $('#premium-pop-up').hide();
+  resetState();
   close();
 })
 }
