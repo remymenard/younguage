@@ -1,14 +1,27 @@
+import Highlighter from 'web-highlighter';
+const highlighter = new Highlighter({
+  style: {
+    className: 'highlight'
+}
+});
+
+
 const YouTubeIframeLoader = require('youtube-iframe');
 let player;
+let markers = []
+let $container = $('#translations-box');
 
 function loadPlayer() {
   YouTubeIframeLoader.load(function(YT) {
     player = new YT.Player('player', {
-      autoplay: '1',
       events: {
         'onStateChange': onPlayerStateChange
       }
     });
+  setTimeout(function() {
+    player.mute();
+    player.playVideo(); }, 1000);
+
   });
 }
 
@@ -23,7 +36,7 @@ function onPlayerStateChange(event) {
   }
 }
 
-var MarkersInit = function(markers) {
+var MarkersInit = function() {
   var elements = document.querySelectorAll('.youtube-marker');
   Array.prototype.forEach.call(elements, function(el, i) {
     var time_start = el.dataset.start;
@@ -34,7 +47,7 @@ var MarkersInit = function(markers) {
     } else {
       id = 0;
     }
-    marker = {};
+    let marker = {};
     marker.time_start = time_start;
     marker.time_end = time_end;
     marker.dom = el;
@@ -46,7 +59,6 @@ var MarkersInit = function(markers) {
 }
 
 // On Ready
-var markers = [];
 
 document.onreadystatechange = () => {
   if (document.readyState === 'complete') {
@@ -72,12 +84,15 @@ function UpdateMarkers() {
 
     if (current_time >= marker.time_start && current_time <= marker.time_end) {
       marker.dom.classList.add("youtube-marker-current");
-      var $container = $('#translations-box');
-      var $scrollTo = $('.youtube-marker-current');
-
-    $container.scrollTop(
+      let $scrollTo = $('.youtube-marker-current');
+      try {
+        $container.scrollTop(
         $scrollTo.offset().top - $container.offset().top + $container.scrollTop()
-    );
+        );
+      } catch (error) {
+        return;
+      }
+
 
     } else {
       marker.dom.classList.remove("youtube-marker-current");
@@ -99,6 +114,7 @@ const resetState = () => {
   isAddedToFlashCards = false;
 }
 
+
 const translation = (word) => {
 
 untranslated = document.getElementById("untranslated");
@@ -114,6 +130,8 @@ googleTranslate(word, sourceLanguage, targetLanguage)
     untranslated.innerText = word
     translated.innerText = response
   $("#translation").show();
+}).catch(function () {
+  alert("Google Traduction n'est pas accessible actuellement.")
 });
 }
 
@@ -143,10 +161,13 @@ const translateWords = () => {
     do {
         range.setEnd(node, range.endOffset + 1);
     } while (range.toString().indexOf(' ') == -1 && range.toString().trim() != '' && range.endOffset < range.endContainer.length);
-
+    // highlight();
     var str = range.toString().trim();
     // alert(str);
     str = str.replace(/\.|!|\?|,|\(|\)|:/g, '')
+
+    highlighter.removeAll()
+    highlighter.fromRange(range)
     translation(str)
 });
   } catch (error) {
@@ -155,6 +176,15 @@ const translateWords = () => {
 
 }
 
+const close = () => {
+  resetState();
+  $("#translation").hide();
+  player.playVideo();
+}
+
+const startAutoClose = () => {
+  setTimeout(function() { close(); }, 1000);
+}
 
 const activateButton = () => {
   $("#cloud").click(function(e) {
@@ -174,6 +204,7 @@ const activateButton = () => {
               translated.style.color = "rgb(101,255,144)";
               translated.innerHTML = "enregistrée"
               isAddedToFlashCards = true;
+              startAutoClose();
               // $("#translation").hide();
           },
           error: function() {
@@ -185,17 +216,16 @@ const activateButton = () => {
 
 $("#cross").click(function (e) {
   e.preventDefault();
-  resetState();
-  $("#translation").hide();
-  player.playVideo();
+  close();
 })
 }
+function loadAll() {
+  if (document.body.contains(document.getElementById('player'))) {
+    loadPlayer();
+    addSpaces();
+    translateWords();
+    activateButton();
+  }
+}
 
-loadPlayer();
-addSpaces();
-translateWords();
-activateButton();
-$(window).bind('beforeunload', function(){
-  throw new Error('This is not an error. This is just to abort javascript');
-});
-// document.addEventListener('turbolinks:load', activateButton);
+loadAll();

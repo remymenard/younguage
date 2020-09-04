@@ -20,9 +20,10 @@ const submitButtonSwitchFlashcard = () => {
 }
 
 const masteredSubmit = () => {
-  document.querySelectorAll('.mastered-submit').forEach((btn) => {
-    btn.addEventListener('click', (event) => {
-      event.srcElement.parentElement.parentElement.parentElement[2].value = 'true';
+  document.querySelectorAll('.mastered-submit').forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      $('input#flashcard_mastered.form-control.hidden').val('true')
+      // event.srcElement.parentElement.parentElement.parentElement[2].value = 'true';
     });
   });
 }

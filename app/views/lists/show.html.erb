@@ -21,7 +21,7 @@
             <div class='fc-verso bg-white rounded-element' style='display: none;'>
               <div class="flex-fc">
                 <p class='fc-word purple-text'><%= flashcard.word.translation %></p>
-                <input class="fc-input input-verso text-center pl-0" type="text" name="flashcard[response]" value='' id="flashcard_response_verso" autocomplete="off">
+                <input class="fc-input input-verso text-center pl-0" type="text" name="flashcard[response]" value='' id="flashcard_response_verso" autocomplete="off"  disabled>
                 <h3 class='fc-translation'><%= flashcard.word.word %></h3>
               </div>
 
@@ -44,7 +44,7 @@
           <div class='d-flex flex-column justify-content-center align-items-center h-100'>
             <h3>100%</h3>
             <p>Congratulations !</p>
-            <%= link_to list_daily_reports_mark_a_day_as_done_path(@list), method: 'PATCH' do %>
+            <%= link_to list_daily_reports_mark_a_day_as_done_path(@list), method: 'PATCH', data: { turbolinks: false }  do %>
               <div class='finished-btn' id='mark-as-finished'>Terminer</div>
             <% end %>
           </div>

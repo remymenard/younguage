@@ -26,8 +26,10 @@ require("easy-autocomplete")
 import "bootstrap";
 
 // Internal imports, e.g:
-// import { initSelect2 } from '../components/init_select2';
 // import { detectWords } from '../components/translateWords.js'
 // document.addEventListener('turbolinks:load', () => {
+//   if(document.querySelectorAll('#player').length >0) {
+//     console.log('called')
+//   }
 // });
 

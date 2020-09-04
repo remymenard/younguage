@@ -1,4 +1,11 @@
 const googleTranslate = require('free-google-translation');
+import Highlighter from 'web-highlighter';
+const highlighter = new Highlighter({
+  style: {
+    className: 'highlight'
+}
+});
+
 
 let untranslated;
 let translated;
@@ -26,6 +33,8 @@ googleTranslate(word, sourceLanguage, targetLanguage)
     untranslated.innerText = word
     translated.innerText = response
   $("#translation").show();
+}).catch(function () {
+  alert("Google Traduction n'est pas accessible actuellement.")
 });
 }
 
@@ -58,6 +67,8 @@ const translateWords = () => {
     var str = range.toString().trim();
     // alert(str);
     str = str.replace(/\.|!|\?|,|\(|\)|:/g, '')
+    highlighter.removeAll()
+    highlighter.fromRange(range)
     translation(str)
 });
   } catch (error) {
@@ -66,6 +77,15 @@ const translateWords = () => {
 
 }
 
+const close = () => {
+  resetState();
+  $("#translation").hide();
+  player.playVideo();
+}
+
+const startAutoClose = () => {
+  setTimeout(function() { close(); }, 1000);
+}
 
 const activateButton = () => {
   $("#cloud").click(function(e) {
@@ -85,6 +105,7 @@ const activateButton = () => {
               translated.style.color = "rgb(101,255,144)";
               translated.innerHTML = "enregistrée"
               isAddedToFlashCards = true;
+              startAutoClose();
               // $("#translation").hide();
           },
           error: function() {
@@ -97,7 +118,7 @@ const activateButton = () => {
 $("#cross").click(function (e) {
   e.preventDefault();
   resetState();
-  $("#translation").hide();
+  close();
 })
 }
 
