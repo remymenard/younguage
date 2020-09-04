@@ -9,7 +9,7 @@ class WordsController < ApplicationController
     translation = params[:translation].downcase
     user = current_user
 
-    premium_restriction = user.orders.where(state: 'paid').empty? && user.words.length >= 10
+    premium_restriction = user.orders.where(state: 'paid').empty? && user.words.length >= 5
     @word = Word.create(user: user, word: word, translation: translation) unless premium_restriction
 
     return "" if premium_restriction
