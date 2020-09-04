@@ -15,6 +15,8 @@ class WordsController < ApplicationController
     return render json: {"saved": false} if premium_restriction
     render json: {"saved": true}
 
-    # Flashcard.create!(word: @word, list: List.last)
+    List.where(user: current_user).each do |list|
+      Flashcard.create!(word: @word, list: list)
+    end
   end
 end
