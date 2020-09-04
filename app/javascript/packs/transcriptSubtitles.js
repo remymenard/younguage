@@ -1,3 +1,11 @@
+import Highlighter from 'web-highlighter';
+const highlighter = new Highlighter({
+  style: {
+    className: 'highlight'
+}
+});
+
+
 const YouTubeIframeLoader = require('youtube-iframe');
 let player;
 let markers = []
@@ -6,11 +14,14 @@ let $container = $('#translations-box');
 function loadPlayer() {
   YouTubeIframeLoader.load(function(YT) {
     player = new YT.Player('player', {
-      autoplay: '1',
       events: {
         'onStateChange': onPlayerStateChange
       }
     });
+  setTimeout(function() {
+    player.mute();
+    player.playVideo(); }, 1000);
+
   });
 }
 
@@ -36,7 +47,7 @@ var MarkersInit = function() {
     } else {
       id = 0;
     }
-    marker = {};
+    let marker = {};
     marker.time_start = time_start;
     marker.time_end = time_end;
     marker.dom = el;
@@ -103,6 +114,7 @@ const resetState = () => {
   isAddedToFlashCards = false;
 }
 
+
 const translation = (word) => {
 
 untranslated = document.getElementById("untranslated");
@@ -118,6 +130,8 @@ googleTranslate(word, sourceLanguage, targetLanguage)
     untranslated.innerText = word
     translated.innerText = response
   $("#translation").show();
+}).catch(function () {
+  alert("Google Traduction n'est pas accessible actuellement.")
 });
 }
 
@@ -147,10 +161,13 @@ const translateWords = () => {
     do {
         range.setEnd(node, range.endOffset + 1);
     } while (range.toString().indexOf(' ') == -1 && range.toString().trim() != '' && range.endOffset < range.endContainer.length);
-
+    // highlight();
     var str = range.toString().trim();
     // alert(str);
     str = str.replace(/\.|!|\?|,|\(|\)|:/g, '')
+
+    highlighter.removeAll()
+    highlighter.fromRange(range)
     translation(str)
 });
   } catch (error) {
@@ -166,7 +183,7 @@ const close = () => {
 }
 
 const startAutoClose = () => {
-  setTimeout(function() { close(); }, 3000);
+  setTimeout(function() { close(); }, 1000);
 }
 
 const activateButton = () => {

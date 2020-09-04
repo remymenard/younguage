@@ -44,7 +44,7 @@
           <div class='d-flex flex-column justify-content-center align-items-center h-100'>
             <h3>100%</h3>
             <p>Congratulations !</p>
-            <%= link_to list_daily_reports_mark_a_day_as_done_path(@list), method: 'PATCH' do %>
+            <%= link_to list_daily_reports_mark_a_day_as_done_path(@list), method: 'PATCH', data: { turbolinks: false }  do %>
               <div class='finished-btn' id='mark-as-finished'>Terminer</div>
             <% end %>
           </div>

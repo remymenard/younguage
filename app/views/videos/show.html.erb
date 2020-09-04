@@ -1,3 +1,7 @@
+<%= content_for :head do %>
+  <%= javascript_pack_tag 'transcriptSubtitles', 'data-turbolinks-track': 'reload', defer: true %>
+<% end %>
+
 <div id = "myBtn" class= 'bar-videos'>
   <div class="d-flex" style = "color: #888888">
     <%= link_to articles_path, class: 'btn mt-2', style: 'color: #888888'  do %>
@@ -10,11 +14,10 @@
   </div>
 </div>
 <!--<div id="player"></div>-->
-<iframe id="player" src="https://www.youtube.com/embed/5MgBikgcWnY?autoplay=1&enablejsapi=1" frameborder="0"></iframe>
+<iframe id="player" src="https://www.youtube.com/embed/5MgBikgcWnY?autoplay=1&playsinline=1&start=9&autoplay=1&enablejsapi=1" allow="autoplay" frameborder="0"></iframe>
 <div class="container">
   <div id="translations-box">
     <%= render 'shared/subtitles' %>
   </div>
 </div>
 <%= render 'shared/translations' %>
-<%= javascript_pack_tag 'transcriptSubtitles' %>
