@@ -32,10 +32,14 @@ class ArticlesController < ApplicationController
       @premium_articles = []
     end
     @video = Video.first
+
+
   end
 
   def show
     @articles = Article.all
     @article = Article.find(params[:id])
+    @subscription = Subscription.first
+    @user = current_user
   end
 end

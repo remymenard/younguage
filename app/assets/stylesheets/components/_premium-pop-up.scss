@@ -1,0 +1,36 @@
+.premium-pop-up-card {
+  position: fixed;
+  width: 337px;
+  height: 516px;
+  left: 19px;
+  top: 37px;
+  color: white;
+  z-index : 100;
+}
+
+.premium-pop-up-padding {
+    padding: 20px 30px;
+
+  h3 {
+    margin: 0;
+  }
+}
+
+#price-pop-up {
+  margin: -15px 0 7px 0;
+}
+
+.plus-tard {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  text-decoration-line: underline;
+  color: #FFFFFF;
+}
+
+.special-margin {
+  margin: 5px 0 7px 0;
+}

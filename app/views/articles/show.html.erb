@@ -30,7 +30,55 @@
   <%= render 'shared/translations' %>
   </div>
 
-  <!-- render -->
+  <!-- POP-UP -->
+    <% if @user.orders.where(state: 'paid').empty? %>
+
+      <div id='premium-pop-up' style='display: block;'>
+        <div class="premium-pop-up-card rounded-element medium-purple-bg d-flex flex-column justify-content-between align-items-center">
+          <div class='premium-title premium-pop-up-padding'>
+            <h1>Désolé...</h1>
+            <h3>Tu as déjà enregistré 5 mots</h3>
+          </div>
+
+          <div class='premium-page d-flex justify-content-center align-items-center'>
+            <div class='w-100'>
+              <h3 class = "text-center pb-3">Passe <strong>PREMIUM</strong> !</h3>
+              <div dlass= "d-flex justify-content-between">
+                <div class='d-flex flex-row justify-content-between align-items-center premium-list'>
+                  <h3>Des article à l'infini </h3>
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <div class='d-flex flex-row justify-content-between align-items-center premium-list'>
+                  <h3>Du contenu vidéo</h3>
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <div class='d-flex flex-row justify-content-between align-items-center premium-list'>
+                  <h3>Enregistrements illimités </h3>
+                  <i class="fas fa-check-circle"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class='w-100 premium-pop-up-padding'>
+            <h3 id='price-pop-up' class = "price"><strong>3€</strong> / mois</h3>
+            <div class=''>
+              <%= form_tag orders_path do %>
+                <%= hidden_field_tag 'subscription_id', @subscription.id %>
+                <%= submit_tag 'Je passe premium', class: 'premium-btn no-border special-margin' %>
+              <% end %>
+              <div class='plus-tard'>plus tard</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <% end %>
+
+
+
+
 </div>
 <%= javascript_pack_tag 'translateWords' %>
 <%= javascript_pack_tag 'banner' %>
