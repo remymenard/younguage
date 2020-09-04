@@ -1,9 +1,9 @@
 <div class="container registration">
   <img class="text-center logo-younguage" src="<%= image_url("younguage.png") %>" alt="logo younguage">
   <div class="choose-bar">
-    <h3 class="active">SIGN IN</h3>
+    <h3 class="active">Se connecter</h3>
     <%= link_to new_registration_path(resource_name) do %>
-      <h3>SIGN UP</h3>
+      <h3>S'inscrire</h3>
     <% end %>
   </div>
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
