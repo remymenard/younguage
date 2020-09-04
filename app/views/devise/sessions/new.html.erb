@@ -1,9 +1,9 @@
 <div class="container registration">
   <img class="text-center logo-younguage" src="<%= image_url("younguage.png") %>" alt="logo younguage">
   <div class="choose-bar">
-    <h3 class="active">Se connecter</h3>
+    <h3 class="active">Connection</h3>
     <%= link_to new_registration_path(resource_name) do %>
-      <h3>S'inscrire</h3>
+      <h3>Inscription</h3>
     <% end %>
   </div>
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -12,14 +12,16 @@
         <div class="form-inputs">
           <%= f.input :email,
                 required: false,
+                label: 'Mail',
                 autofocus: true,
                 input_html: { autocomplete: "email" } %>
           <%= f.input :password,
                 required: false,
+                label: 'Mot de passe',
                 input_html: { autocomplete: "current-password" } %>
 
-          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-          <%= link_to "Password reset", new_password_path(resource_name), id: "password-reset"%>
+          <%= f.input :remember_me, label: 'Se souvenir de moi', as: :boolean if devise_mapping.rememberable? %>
+          <%= link_to "J'ai oublié mon mot de passe", new_password_path(resource_name), id: "password-reset"%>
         </div>
       </div>
       <div class="form-actions">
