@@ -13,7 +13,7 @@
 
 .premium-title {
   h1 {
-    font-family: Noto Sans;
+    font-family: $noto-sans;
     font-style: normal;
     font-weight: normal;
     font-size: 35px;
@@ -22,7 +22,7 @@
   }
 
   h3 {
-    font-family: Noto Sans;
+    font-family: $noto-sans;
     font-style: normal;
     font-weight: normal;
     font-size: 20px;
@@ -36,7 +36,7 @@
 }
 
 .price {
-  font-family: Open Sans;
+  font-family: $headers-font;
   font-style: normal;
   font-weight: bold;
   font-size: 19px;
@@ -45,7 +45,7 @@
   color: #65FF90;
 
   strong {
-    font-family: Open Sans;
+    font-family: $headers-font;
     font-style: normal;
     font-weight: 800;
     font-size: 50px;
@@ -59,7 +59,7 @@
 .premium-list {
 
   h3 {
-    font-family: Noto Sans;
+    font-family: $noto-sans;
     font-style: normal;
     font-weight: normal;
     font-size: 19px;
