@@ -25,5 +25,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = current_user.orders.find(params[:id])
+    @state = 'EN ATTENTE' if @order.state == 'pending'
+    @state = 'CONFIRMÉ'   if @order.state == 'paid'
   end
 end

@@ -33,7 +33,7 @@
   <!-- POP-UP -->
     <% if @user.orders.where(state: 'paid').empty? %>
 
-      <div id='premium-pop-up' style='display: block;'>
+      <div id='premium-pop-up' style='display: none;'>
         <div class="premium-pop-up-card rounded-element medium-purple-bg d-flex flex-column justify-content-between align-items-center">
           <div class='premium-title premium-pop-up-padding'>
             <h1>Désolé...</h1>
@@ -67,7 +67,7 @@
                 <%= hidden_field_tag 'subscription_id', @subscription.id %>
                 <%= submit_tag 'Je passe premium', class: 'premium-btn no-border special-margin' %>
               <% end %>
-              <div class='plus-tard'>plus tard</div>
+              <div class='plus-tard'>plus tard</div> <!-- ICI -->
             </div>
           </div>
         </div>
