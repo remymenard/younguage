@@ -1,0 +1,91 @@
+<div id="app" class="white bg-dark-gray vh-100">
+  <section class="tc">
+    <div class="sans-serif f2 ff-m bg-red b">
+      <button class="fr pa3 outline-0 bn bg-black-50 white o-50 glow" @click='refreshWindow'><i class="material-icons">cached</i></button>
+      <div class="pv3">
+        Netflix Remote <i class="material-icons">settings_remote</i>
+      </div>
+    </div>
+    <transition enter-active-class="animated fadeIn" enter-active-class="animated fadeOut">
+      <div class="pv2 mv2 bg-light-yellow w-50 center br2 red" v-if="error.show">
+        {{ error.message }}
+      </div>
+    </transition>
+    <transition enter-active-class="animated fadeIn" enter-active-class="animated fadeOut">
+      <div class="pv2 bg-light-green tc dark-green" v-show="peerConnected">
+        Connected
+      </div>
+    </transition>
+    <transition enter-active-class="animated slideInLeft" enter-active-class="animated slideOutRight">
+      <div v-show="peerConnected" class="pv3">
+        <div class="grid ph2">
+          <button class="bn db br2 pa2 tc outline-0 white bg-red jump" v-for="ctrl, index in controls" :key="index" @click='videoAction(ctrl.action)'>
+            <i class="material-icons f1">{{ ctrl.icon }}</i>
+          </button>
+        </div>
+        <div class="subtitles">
+          <span v-for="subtitle in subtitles" ><span v-html="subtitle"></span></span>
+        </div>
+      </div>
+    </transition>
+    <transition enter-active-class="animated fadeIn" enter-active-class="animated fadeOut">
+      <div v-show="!peerConnected">
+        <button class="bn mv2 pv3 w5 br2 o-60 glow pointer ttu bg-light-silver black flex justify-center items-center center" @click="scanCode">
+          <span>Scan now</span>
+          <i class="ml2 material-icons">camera_alt</i>
+        </button>
+        <transition enter-active-class="animated flipInX" enter-active-class="animated flipOutX">
+          <video ref="video" class="w5 h5 br2" v-show="isCamera"></video>
+        </transition>
+        <canvas ref="canvas" hidden></canvas>
+        <input type="text" class="bn db center w-90 br2 pa2 tc outline-0 o-90 glow" placeholder="Peer ID" v-model="peerId"/>
+        <button class="bn mv2 pv3 w5 br2 grow pointer ttu bg-green white" @click='connectRemote'>Connect</button>
+      </div>
+    </transition>
+  </section>
+</div>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<%= javascript_pack_tag 'remote' %>
+<%= javascript_pack_tag 'translateWords' %>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelector('.pointer').addEventListener('onclick', function() {
+      console.log('sjknk')
+    })
+    $('button').on('.pointer', () => {
+      console.log('clickezhj')
+    })
+    console.log('loadedd')
+    var socket = io.connect('https://agile-island-59573.herokuapp.com/', {transports:['websocket']});
+    socket.on('signal', (data) => {
+      console.log('connected')
+        socket.emit('set-answer', { signal: data, id: this.peerId });
+      });
+      socket.on('connect', () => {
+        console.log('connected')
+        this.peerConnected = true;
+      });
+    socket.on('data', (data) => {
+      console.log('connected')
+        this.handleIncoming(data.toString());
+      });
+      socket.on('error', (e) => {
+        this.peerConnected = false;
+        this.showError(e.message);
+      });
+      socket.on('data', (data) => {
+        const dataString = data.toString();
+        if (dataString[0] === '{') {
+          const data = JSON.parse(dataString);
+          console.log(data)
+          if(data.action === "subtitles") {
+            this.updateSubtitles(data.payload)
+          }
+        }
+      })
+      socket.on('close', function(err) {
+        this.peerConnected = false;
+      });
+  });
+</script>

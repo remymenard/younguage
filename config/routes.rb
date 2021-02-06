@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   end
   mount StripeEvent::Engine, at: '/stripe-webhooks'
 
+  get :series, to: 'series#remote'
+
   resources :articles, only: [:index, :show]
   get 'videos', to: 'videos#show'
   resources :words, only: [:create, :index]

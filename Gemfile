@@ -66,3 +66,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'redcarpet'
 gem 'selenium-webdriver'
 gem 'webdrivers'
+gem 'socket.io-client-simple'
+gem 'rack-cors'

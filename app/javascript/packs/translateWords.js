@@ -39,7 +39,7 @@ googleTranslate(word, sourceLanguage, targetLanguage)
 }
 
 const addSpaces = () => {
-  let all_p = document.querySelectorAll("h2, h1, p");
+  let all_p = document.querySelectorAll("h2, h1, p, span");
   all_p.forEach(paragraph => {
     // console.log(paragraph);
     paragraph.innerText = " " + paragraph.innerText + " "
